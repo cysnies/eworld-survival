@@ -1,0 +1,8 @@
+name: shop
+main: shop.Main
+version: 1.0
+softdepend: [lib,ticket]
+commands:
+  shop:
+    description: none.
+    usage: /<command> ?

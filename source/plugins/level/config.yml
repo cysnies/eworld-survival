@@ -1,0 +1,1817 @@
+#功能:
+#>称号
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/level/language_cn.yml"
+#################################
+#####         优惠          #####
+#################################
+benefit:
+  from: 300                      #单位天
+  to: 999999                     #单位时
+  levels:
+    - 200
+    - 201
+    - 202
+    - 203
+    - 204
+    - 205
+#################################
+#####         权限          #####
+#################################
+#管理权限
+per_level_admin: "per.level.admin"
+#查看其它玩家称号的权限
+per_level_info_other: "per.level.info.other"
+#################################
+#####         配置          #####
+#################################
+check:
+  interval: 300                  #期限的检测间隔,单位秒
+pre:
+  has: "&a\u2714"
+  hasnot: "&c\u2718"
+#################################
+#####       称号类型        #####
+#################################
+#类型ID 类型名
+#此处的位置决定称号的排序,非由ID大小决定
+type:
+  - "1 等级"
+  - "5 个人"
+  - "10 竞争"
+  - "15 其它"
+  - "20 赞助"
+  - "25 职位"
+#################################
+#####     检测添加方式      #####
+#################################
+addType:
+  - "0 自动"
+  - "1 定时周期性检测"
+  - "2 服务器重启时检测"
+  - "3 管理手动添加"
+#################################
+#####         效果          #####
+#################################
+effect:
+  names:
+    attack: "攻击"
+    health: "生命上限"
+    miss: "闪避"
+#################################
+#####         显示          #####
+#################################
+show:
+  interval: 5000                 操作间隔,单位毫秒
+#################################
+#####         称号          #####
+#################################
+level:
+  level1:                        #'level'后的数字唯一即可
+    id: 1                        #称号ID,唯一即可,并不代表排列顺序
+    typeId: 1                    #称号对应的类型ID
+    overlap: false               #此称号是否允许重叠
+    name: "泥土"                 #称号名
+    show: "&f[&7泥土&f]"         #称号的显示名
+    condition: "在主界面花费1000金币升级"#获得条件的显示
+    addType: 0                   #检测添加方式的ID
+    timeLimit: -2                #期限,-1表示非永久,-2表示永久,大于0表示每次获取时会增加的期限
+    group: "level_1"             #称号绑定的权限组,不可为空
+    pers:                        #获得权限的显示列表,可为空
+      - "&6广告宣传"
+      - "&6领地'banMove'标记权限"
+      - "&6发邮件的权限"
+    effects:                     #称号效果,可为空
+      - "1 0 1.0"                #效果类型(0表示攻,1表示生命上限,2表示闪避) 操作(0表示加,1表示加百分比) 值(实数)
+    rewards: "r1_1"              #奖励类型,可为空
+    rewardsShow:                 #奖励的显示列表,可为空
+      - "&6150经验"
+  level2:
+    id: 2
+    typeId: 1
+    overlap: false
+    name: "沙子"
+    show: "&f[&f沙子&f]"
+    condition: "在主界面花费5000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_2"
+    pers: 
+      - "&6改变领地所有者的权限"
+    effects:
+      - "1 0 2.0"
+    rewards: "r1_2"
+    rewardsShow:
+      - "&6200经验"
+  level3:
+    id: 3
+    typeId: 1
+    overlap: false
+    name: "砂砾"
+    show: "&f[&9砂砾&f]"
+    condition: "在主界面花费10000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_3"
+    pers: 
+      - "&6倒岩浆"
+      - "&6全球商店出售物品"
+    effects:
+      - "0 0 0.1"
+      - "1 0 3.0"
+    rewards: "r1_3"
+    rewardsShow:
+      - "&6250经验"
+  level4:
+    id: 4
+    typeId: 1
+    overlap: false
+    name: "原木"
+    show: "&f[&e原木&f]"
+    condition: "在主界面花费30000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_4"
+    pers: 
+      - "&6领地'safe'标记操作权限(可以建立安全竞技场)"
+    effects:
+      - "0 0 0.2"
+      - "1 0 4.0"
+    rewards: "r1_4"
+    rewardsShow:
+      - "&6300经验"
+  level5:
+    id: 5
+    typeId: 1
+    overlap: false
+    name: "圆石"
+    show: "&f[&1圆石&f]"
+    condition: "在主界面花费50000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_5"
+    pers: 
+      - "&6创建小区"
+      - "&6创建地皮"
+    effects:
+      - "0 0 0.3"
+      - "1 0 6.0"
+    rewards: "r1_5"
+    rewardsShow:
+      - "&6350经验"
+  level6:
+    id: 6
+    typeId: 1
+    overlap: false
+    name: "煤炭"
+    show: "&f[&2煤炭&f]"
+    condition: "在主界面花费60000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_6"
+    pers: 
+      - "&6领地'banPotionHurt'标记权限"
+      - "&6创建抽奖牌的权限"
+    effects:
+      - "0 0 0.5"
+      - "1 0 7.0"
+    rewards: "r1_6"
+    rewardsShow:
+      - "&6400经验"
+  level7:
+    id: 7
+    typeId: 1
+    overlap: false
+    name: "红石"
+    show: "&f[&d红石&f]"
+    condition: "在主界面花费70000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_7"
+    pers: 
+      - "&6领地'banEntityChange'标记权限"
+      - "&6设置心情的权限"
+    effects:
+      - "0 0 0.8"
+      - "1 0 8.0"
+      - "2 1 1.0"
+    rewards: "r1_7"
+    rewardsShow:
+      - "&620等级"
+  level8:
+    id: 8
+    typeId: 1
+    overlap: false
+    name: "青金石"
+    show: "&f[&3青金石&f]"
+    condition: "在主界面花费80000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_8"
+    pers: 
+      - "&6领地'banEye'标记权限"
+      - "&6创建'钥匙锁'的权限"
+    effects:
+      - "0 0 1.0"
+      - "1 0 9.0"
+      - "2 1 2.0"
+    rewards: "r1_8"
+    rewardsShow:
+      - "&625等级"
+      - "&61钻石修复石"
+  level9:
+    id: 9
+    typeId: 1
+    overlap: false
+    name: "下界石英"
+    show: "&f[&f下界石英&f]"
+    condition: "在主界面花费90000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_9"
+    pers: 
+      - "&6领地'poisonWater'标记权限"
+      - "&6领地'suck'标记权限"
+    effects:
+      - "0 0 1.3"
+      - "1 0 10.0"
+      - "2 1 3.0"
+    rewards: "r1_9"
+    rewardsShow:
+      - "&630等级"
+      - "&63钻石修复石"
+  level10:
+    id: 10
+    typeId: 1
+    overlap: false
+    name: "铁矿"
+    show: "&f[&a铁矿&f]"
+    condition: "在主界面花费100000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_10"
+    pers: 
+      - "&6领地'banTpIn'标记权限"
+      - "&6领地'banHide'标记权限"
+    effects:
+      - "0 0 1.5"
+      - "1 0 12.0"
+      - "2 1 4.0"
+    rewards: "r1_10"
+    rewardsShow:
+      - "&635等级"
+      - "&65钻石修复石"
+  level11:
+    id: 11
+    typeId: 1
+    overlap: false
+    name: "金矿"
+    show: "&f[&6金矿&f]"
+    condition: "在主界面花费110000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_11"
+    pers: 
+      - "&6领地'banPhysical'标记权限"
+      - "&6领地'banSit'标记权限"
+    effects:
+      - "0 0 1.8"
+      - "1 0 14.0"
+      - "2 1 6.0"
+    rewards: "r1_11"
+    rewardsShow:
+      - "&640等级"
+      - "&67钻石修复石"
+  level12:
+    id: 12
+    typeId: 1
+    overlap: false
+    name: "黑耀石"
+    show: "&f[&1黑耀石&f]"
+    condition: "在主界面花费120000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_12"
+    pers: 
+      - "&6领地'banMonster'标记权限"
+    effects:
+      - "0 0 2.0"
+      - "1 0 15.0"
+      - "2 1 8.0"
+    rewards: "r1_12"
+    rewardsShow:
+      - "&645等级"
+      - "&69钻石修复石"
+  level13:
+    id: 13
+    typeId: 1
+    overlap: false
+    name: "钻石"
+    show: "&f[&b钻石&f]"
+    condition: "在主界面花费130000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_13"
+    pers: 
+      - "&6领地'banCmd'标记权限"
+    effects:
+      - "0 0 2.3"
+      - "1 0 16.0"
+      - "2 1 10.0"
+    rewards: "r1_13"
+    rewardsShow:
+      - "&650等级"
+      - "&611钻石修复石"
+  level14:
+    id: 14
+    typeId: 1
+    overlap: false
+    name: "绿宝石"
+    show: "&f[&3绿宝石&f]"
+    condition: "在主界面花费140000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_14"
+    pers: 
+      - "&6领地'banFly'标记权限"
+      - "&6领地'fly'标记权限"
+    effects:
+      - "0 0 2.6"
+      - "1 0 18.0"
+      - "2 1 13.0"
+    rewards: "r1_14"
+    rewardsShow:
+      - "&655等级"
+      - "&613钻石修复石"
+  level15:
+    id: 15
+    typeId: 1
+    overlap: false
+    name: "基岩"
+    show: "&f[&8&l基岩&f]"
+    condition: "在主界面花费150000金币升级"
+    addType: 0
+    timeLimit: -2
+    group: "level_15"
+    pers: 
+      - "&6固定领地的权限(慎用)"
+      - "&6领地'storm'标记权限"
+    effects:
+      - "0 0 3.0"
+      - "1 0 20.0"
+      - "2 1 15.0"
+    rewards: "r1_14"
+    rewardsShow:
+      - "&660等级"
+      - "&615钻石修复石"
+  level50:
+    id: 50
+    typeId: 5
+    overlap: false
+    name: "草民"
+    show: "&f[&7草民&f]"
+    condition: "总在线时间达到1天"
+    addType: 1
+    timeLimit: -2
+    group: "level_50"
+    pers: 
+    effects:
+      - "1 0 2.0"
+    rewards: "r5_1"
+    rewardsShow:
+      - "&6100金币"
+  level51:
+    id: 51
+    typeId: 5
+    overlap: false
+    name: "平民"
+    show: "&f[&2平民&f]"
+    condition: "总在线时间达到5天"
+    addType: 1
+    timeLimit: -2
+    group: "level_51"
+    pers: 
+    effects:
+      - "1 0 4.0"
+    rewards: "r5_2"
+    rewardsShow:
+      - "&61000金币"
+  level52:
+    id: 52
+    typeId: 5
+    overlap: false
+    name: "公民"
+    show: "&f[&b公民&f]"
+    condition: "总在线时间达到25天"
+    addType: 1
+    timeLimit: -2
+    group: "level_52"
+    pers: 
+    effects:
+      - "1 0 6.0"
+    rewards: "r5_3"
+    rewardsShow:
+      - "&610000金币"
+  level53:
+    id: 53
+    typeId: 5
+    overlap: false
+    name: "初级矿工"
+    show: "&f[&7初级矿工&f]"
+    condition: "挖矿数>10000"
+    addType: 1
+    timeLimit: -2
+    group: "level_53"
+    pers: 
+    effects:
+      - "0 1 0.03"
+      - "1 0 2.0"
+    rewards: "r5_4"
+    rewardsShow:
+      - "&6200金币"
+  level54:
+    id: 54
+    typeId: 5
+    overlap: false
+    name: "挖矿能手"
+    show: "&f[&2挖矿能手&f]"
+    condition: "挖矿数>100000"
+    addType: 1
+    timeLimit: -2
+    group: "level_54"
+    pers: 
+    effects:
+      - "0 1 0.05"
+      - "1 0 4.0"
+    rewards: "r5_5"
+    rewardsShow:
+      - "&63000金币"
+  level55:
+    id: 55
+    typeId: 5
+    overlap: false
+    name: "挖矿大师"
+    show: "&f[&b挖矿大师&f]"
+    condition: "挖矿数>1000000"
+    addType: 1
+    timeLimit: -2
+    group: "level_55"
+    pers: 
+    effects:
+      - "0 1 0.08"
+      - "1 0 6.0"
+    rewards: "r5_6"
+    rewardsShow:
+      - "&615000金币"
+  level56:
+    id: 56
+    typeId: 5
+    overlap: false
+    name: "破坏狂"
+    show: "&f[&c破坏狂&f]"
+    condition: "破坏数>100000"
+    addType: 1
+    timeLimit: -2
+    group: "level_56"
+    pers: 
+    effects:
+      - "1 1 0.05"
+    rewards: "r5_7"
+    rewardsShow:
+      - "&62000金币"
+  level57:
+    id: 57
+    typeId: 5
+    overlap: false
+    name: "建造狂"
+    show: "&f[&5建造狂&f]"
+    condition: "放置数>100000"
+    addType: 1
+    timeLimit: -2
+    group: "level_57"
+    pers: 
+    effects:
+      - "1 1 0.08"
+    rewards: "r5_8"
+    rewardsShow:
+      - "&65000金币"
+  level58:
+    id: 58
+    typeId: 5
+    overlap: false
+    name: "初级猎手"
+    show: "&f[&7初级猎手&f]"
+    condition: "杀怪数>1000"
+    addType: 1
+    timeLimit: -2
+    group: "level_58"
+    pers: 
+    effects:
+      - "0 0 0.5"
+      - "2 1 4.0"
+    rewards: "r5_9"
+    rewardsShow:
+      - "&6300金币"
+  level59:
+    id: 59
+    typeId: 5
+    overlap: false
+    name: "强力猎手"
+    show: "&f[&2强力猎手&f]"
+    condition: "杀怪数>10000"
+    addType: 1
+    timeLimit: -2
+    group: "level_59"
+    pers: 
+    effects:
+      - "0 0 1.0"
+      - "2 1 6.0"
+    rewards: "r5_10"
+    rewardsShow:
+      - "&61500金币"
+  level60:
+    id: 60
+    typeId: 5
+    overlap: false
+    name: "怪物猎人"
+    show: "&f[&b怪物猎人&f]"
+    condition: "杀怪数>100000"
+    addType: 1
+    timeLimit: -2
+    group: "level_60"
+    pers: 
+    effects:
+      - "0 0 1.5"
+      - "2 1 8.0"
+    rewards: "r5_11"
+    rewardsShow:
+      - "&615000金币"
+  level61:
+    id: 61
+    typeId: 5
+    overlap: false
+    name: "屠夫"
+    show: "&f[&c屠夫&f]"
+    condition: "杀动物数>10000"
+    addType: 1
+    timeLimit: -2
+    group: "level_61"
+    pers: 
+    effects:
+      - "0 0 0.5"
+      - "1 0 2.0"
+    rewards: "r5_12"
+    rewardsShow:
+      - "&63000金币"
+  level62:
+    id: 62
+    typeId: 5
+    overlap: false
+    name: "刺客"
+    show: "&f[&7刺客&f]"
+    condition: "杀人数>500"
+    addType: 1
+    timeLimit: -2
+    group: "level_62"
+    pers: 
+    effects:
+      - "2 1 8.0"
+    rewards: "r5_13"
+    rewardsShow:
+      - "&6500金币"
+  level63:
+    id: 63
+    typeId: 5
+    overlap: false
+    name: "猎杀者"
+    show: "&f[&2猎杀者&f]"
+    condition: "杀人数>2500"
+    addType: 1
+    timeLimit: -2
+    group: "level_63"
+    pers: 
+    effects:
+      - "2 1 13.0"
+    rewards: "r5_14"
+    rewardsShow:
+      - "&62000金币"
+  level64:
+    id: 64
+    typeId: 5
+    overlap: false
+    name: "裁决者"
+    show: "&f[&b裁决者&f]"
+    condition: "杀人数>12500"
+    addType: 1
+    timeLimit: -2
+    group: "level_64"
+    pers: 
+    effects:
+      - "2 1 18.0"
+    rewards: "r5_15"
+    rewardsShow:
+      - "&620000金币"
+  level100:
+    id: 100
+    typeId: 10
+    overlap: false
+    name: "首富"
+    show: "&f[&5首富&f]"
+    condition: "财富排行第一"
+    addType: 2
+    timeLimit: -1
+    group: "level_100"
+    pers: 
+    effects:
+      - "1 0 7.0"
+      - "1 1 0.1"
+    rewards: ""
+    rewardsShow:
+  level101:
+    id: 101
+    typeId: 10
+    overlap: false
+    name: "财主"
+    show: "&f[&4财主&f]"
+    condition: "财富排行第二"
+    addType: 2
+    timeLimit: -1
+    group: "level_101"
+    pers: 
+    effects:
+      - "1 0 5.0"
+      - "1 1 0.08"
+    rewards: ""
+    rewardsShow:
+  level102:
+    id: 102
+    typeId: 10
+    overlap: false
+    name: "富豪"
+    show: "&f[&c富豪&f]"
+    condition: "财富排行第三"
+    addType: 2
+    timeLimit: -1
+    group: "level_102"
+    pers: 
+    effects:
+      - "1 0 3.0"
+      - "1 1 0.05"
+    rewards: ""
+    rewardsShow:
+  level103:
+    id: 103
+    typeId: 10
+    overlap: false
+    name: "战神"
+    show: "&f[&5战神&f]"
+    condition: "战斗力排行第一"
+    addType: 2
+    timeLimit: -1
+    group: "level_103"
+    pers: 
+    effects:
+      - "0 0 2.0"
+      - "0 1 0.15"
+      - "2 1 10.0"
+    rewards: ""
+    rewardsShow:
+  level104:
+    id: 104
+    typeId: 10
+    overlap: false
+    name: "战圣"
+    show: "&f[&a战圣&f]"
+    condition: "战斗力排行第二"
+    addType: 2
+    timeLimit: -1
+    group: "level_104"
+    pers: 
+    effects:
+      - "0 0 1.5"
+      - "0 1 0.10"
+      - "2 1 8.0"
+    rewards: ""
+    rewardsShow:
+  level105:
+    id: 105
+    typeId: 10
+    overlap: false
+    name: "战王"
+    show: "&f[&3战王&f]"
+    condition: "战斗力排行第三"
+    addType: 2
+    timeLimit: -1
+    group: "level_105"
+    pers: 
+    effects:
+      - "0 0 1.0"
+      - "0 1 0.05"
+      - "2 1 5.0"
+    rewards: ""
+    rewardsShow:
+  level150:
+    id: 150
+    typeId: 15
+    overlap: false
+    name: "YY新人"
+    show: "&f[&7YY新人&f]"
+    condition: "YY贡献达到50"
+    addType: 3
+    timeLimit: -2
+    group: "level_150"
+    pers: 
+    effects:
+      - "1 0 2.0"
+    rewards: "r15_1"
+    rewardsShow:
+      - "&61000金币"
+  level151:
+    id: 151
+    typeId: 15
+    overlap: false
+    name: "YY会员"
+    show: "&f[&aYY会员&f]"
+    condition: "YY贡献达到300"
+    addType: 3
+    timeLimit: -2
+    group: "level_151"
+    pers: 
+    effects:
+      - "1 0 4.0"
+    rewards: "r15_2"
+    rewardsShow:
+      - "&65000金币"
+  level152:
+    id: 152
+    typeId: 15
+    overlap: false
+    name: "YY之星"
+    show: "&f[&bYY之星&f]"
+    condition: "YY贡献达到1000"
+    addType: 3
+    timeLimit: -2
+    group: "level_152"
+    pers: 
+    effects:
+      - "1 0 6.0"
+    rewards: "r15_3"
+    rewardsShow:
+      - "&620000金币"
+  level153:
+    id: 153
+    typeId: 15
+    overlap: false
+    name: "贵族"
+    show: "&f[&5贵族&f]"
+    condition: "金币达到10W"
+    addType: 2
+    timeLimit: -1
+    group: "level_153"
+    pers: 
+    effects:
+      - "1 1 0.08"
+    rewards: ""
+    rewardsShow:
+  level154:
+    id: 154
+    typeId: 15
+    overlap: false
+    name: "领主"
+    show: "&f[&1领主&f]"
+    condition: "拥有自己的一个小区"
+    addType: 0
+    timeLimit: -1
+    group: "level_154"
+    pers: 
+    effects:
+      - "2 1 5.0"
+    rewards: ""
+    rewardsShow:
+  level155:
+    id: 155
+    typeId: 15
+    overlap: false
+    name: "活跃"
+    show: "&f[&a活跃&f]"
+    condition: "处于'活跃'状态"
+    addType: 2
+    timeLimit: -1
+    group: "level_155"
+    pers: 
+      - "&6免费领取每日礼包"
+    effects:
+    rewards: ""
+    rewardsShow:
+  level156:
+    id: 156
+    typeId: 15
+    overlap: false
+    name: "存活"
+    show: "&f[&6存活&f]"
+    condition: "处于'存活'状态"
+    addType: 2
+    timeLimit: -1
+    group: "level_156"
+    pers: 
+    effects:
+    rewards: ""
+    rewardsShow:
+  level157:
+    id: 157
+    typeId: 15
+    overlap: false
+    name: "贡献者"
+    show: "&f[&3贡献者&f]"
+    condition: "为服务器拍一部视频(质量可以的)"
+    addType: 3
+    timeLimit: -2
+    group: "level_157"
+    pers: 
+    effects:
+    rewards: ""
+    rewardsShow:
+      - "&61000-10000金币奖励(找服主领取)"
+  level158:
+    id: 158
+    typeId: 15
+    overlap: false
+    name: "村庄"
+    show: "&e村>村名"
+    condition: "加入的村庄拥有名字"
+    addType: 0
+    timeLimit: -1
+    group: "level_158"
+    pers: 
+    effects:
+    rewards: ""
+    rewardsShow:
+  level200:
+    id: 200
+    typeId: 20
+    overlap: true
+    name: "红钻经济VIP"
+    show: "&f[&c红钻VIP&f]"
+    condition: "购买使用红钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_200"
+    pers: 
+      - "&6每日礼包:金锭x2"
+      - "&6领地价格&50.05&6/格"
+      - "&6转帐免税"
+      - "&6收费门免税"
+      - "&6创建钥匙花费更少"
+      - "&6聊天花费更少"
+      - "&6商店数量上限&5200"
+      - "&6全球商店创建花费更少"
+    effects:
+    rewards: "r20_1"
+    rewardsShow:
+      - "&65000金币"
+      - "&610等级"
+  level201:
+    id: 201
+    typeId: 20
+    overlap: true
+    name: "黄钻经验VIP"
+    show: "&f[&e黄钻VIP&f]"
+    condition: "购买使用黄钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_201"
+    pers: 
+      - "&6每日礼包:附魔瓶x15"
+      - "&6打怪有几率掠夺更多经验"
+      - "&6挖矿有几率掠夺更多经验"
+      - "&6熔炉有几率掠夺更多经验"
+      - "&6神之技能&5+点石成金+&7(挖矿时随机触发找到大量金矿)"
+    effects:
+    rewards: "r20_1"
+    rewardsShow:
+      - "&65000金币"
+      - "&610等级"
+  level202:
+    id: 202
+    typeId: 20
+    overlap: true
+    name: "蓝钻自由VIP"
+    show: "&f[&3蓝钻VIP&f]"
+    condition: "购买使用蓝钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_202"
+    pers: 
+      - "&6每日礼包:面包x20"
+      - "&6加入满人服"
+      - "&6传送无延迟"
+      - "&6随机传送冷却时间更短"
+      - "&6聊天间隔限制更小"
+      - "&6死亡物品耐久不下降"
+      - "&6动态火把(矿物世界中火把放物品栏第七格)"
+      - "&6随身工作台(/c)"
+      - "&6设置心情"
+    effects:
+    rewards: "r20_1"
+    rewardsShow:
+      - "&65000金币"
+      - "&610等级"
+  level203:
+    id: 203
+    typeId: 20
+    overlap: true
+    name: "绿钻幸运VIP"
+    show: "&f[&2绿钻VIP&f]"
+    condition: "购买使用绿钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_203"
+    pers: 
+      - "&6每日礼包:劣质铁修复石x2"
+      - "&6修复石修复效果加强"
+      - "&6武器装备鉴定成功率更高"
+      - "&6武器装备打孔成功率更高"
+      - "&6宝石镶嵌成功率更高"
+      - "&6宝石升级成功率更高"
+      - "&6宝石合成成功率更高"
+      - "&6闪电攻击伤害更高"
+      - "&6神之技能&5+万金油+&7(挖矿时随机触发恢复满状态)"
+      - "&6神之技能&5+挖矿祝福+&7(挖矿时随机触发恢复40耐久)"
+      - "&6神之技能&5+战争祝福+&7(战斗时随机触发恢复35耐久)"
+    effects:
+    rewards: "r20_1"
+    rewardsShow:
+      - "&65000金币"
+      - "&610等级"
+  level204:
+    id: 204
+    typeId: 20
+    overlap: true
+    name: "紫钻炫酷VIP"
+    show: "&f[&5紫钻VIP&f]"
+    condition: "购买使用紫钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_204"
+    pers: 
+      - "&6每日礼包:烟花x10"
+      - "&6行走特效"
+      - "&6帽子权限(/hat)"
+      - "&6免费聊天颜色与粗体"
+      - "&6领地'fly'标记权限(领地飞行)"
+    effects:
+    rewards: "r20_1"
+    rewardsShow:
+      - "&65000金币"
+      - "&610等级"
+  level205:
+    id: 205
+    typeId: 20
+    overlap: true
+    name: "炫酷"
+    show: "&6&l[狂帅酷拽吊炸天]&f"
+    condition: "购买使用紫钻VIP石"
+    addType: 0
+    timeLimit: 720
+    group: "level_205"
+    pers: 
+    effects:
+    rewards: ""
+    rewardsShow:
+  level206:
+    id: 206
+    typeId: 20
+    overlap: true
+    name: "赞助"
+    show: "&f[&3赞助&f]"
+    condition: "购买使用无偿赞助石"
+    addType: 0
+    timeLimit: -2
+    group: "level_206"
+    pers: 
+    effects:
+    rewards: ""
+    rewardsShow:
+  level250:
+    id: 250
+    typeId: 25
+    overlap: false
+    name: "服主"
+    show: "&f[&4&l服主&f]"
+    condition: "服主专用"
+    addType: 3
+    timeLimit: -1
+    group: "level_250"
+    pers:
+    effects:
+    rewards: ""
+    rewardsShow:
+  level251:
+    id: 251
+    typeId: 25
+    overlap: false
+    name: "管理"
+    show: "&f[&b&l管理&f]"
+    condition: "管理专用"
+    addType: 3
+    timeLimit: -1
+    group: "level_251"
+    pers:
+      - "&6禁言"
+      - "&6临时/永久封禁"
+      - "&6解封"
+      - "&6查询"
+    effects:
+    rewards: ""
+    rewardsShow:
+  level252:
+    id: 252
+    typeId: 25
+    overlap: false
+    name: "咨询员"
+    show: "&f[&2&l咨询员&f]"
+    condition: "咨询员专用"
+    addType: 3
+    timeLimit: -1
+    group: "level_252"
+    pers:
+    effects:
+    rewards: ""
+    rewardsShow:
+  level253:
+    id: 253
+    typeId: 25
+    overlap: false
+    name: "宣传员"
+    show: "&f[&6&l宣传员&f]"
+    condition: "宣传员专用"
+    addType: 3
+    timeLimit: -1
+    group: "level_253"
+    pers:
+    effects:
+    rewards: ""
+    rewardsShow:
+  level254:
+    id: 254
+    typeId: 25
+    overlap: false
+    name: "建筑师"
+    show: "&f[&3&l建筑师&f]"
+    condition: "建筑师专用"
+    addType: 3
+    timeLimit: -1
+    group: "level_254"
+    pers:
+    effects:
+    rewards: ""
+    rewardsShow:
+#################################
+#####         界面          #####
+#################################
+item:
+  interval: 650                  #两次显示间隔,单位毫秒
+  main:
+    info: 4
+    has: 20
+    show: 22
+    hasnot: 24
+#################################
+#####         物品          #####
+#################################
+items:
+  main_info:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§3当前显示称号: §f{0}'
+      lore:
+        - '§3当前效果:'
+        - §3+{0}§6攻
+        - §3+{1}§6生命上限
+        - §3+{2}%§6攻
+        - §3+{3}%§6生命上限
+        - §3+{4}%§6闪避
+  main_has:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l查看已获取的称号
+  main_show:
+    type: ENDER_PEARL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l选择显示称号
+      lore:
+        - '§7(会显示在玩家列表,聊天信息及玩家头上)'
+  main_hasnot:
+    type: RECORD_3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c§l查看未获取的称号
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  has_info:
+    type: BOOK
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: 称号名
+  has_tip:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6提示:点击称号可以切换生效状态
+      lore:
+        - '§7(同一类型非重叠称号最多同时生效一个)'
+        - '§7(可重叠称号会自动生效)'
+  main_level1:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l等级
+      lore:
+        - §7(相当于§b权限组§7,花金币升级权限组以获取更多权限与提高属性)
+        - §7(点击切换页面)
+  main_level2:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l个人
+      lore:
+        - §7(相当于§b成就§7,达到指定要求获取称号与奖励)
+        - §7(点击切换页面)
+  main_level3:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l竞争
+      lore:
+        - §7(相当于竞争类型的§b成就§7,对排行前面玩家的奖励)
+        - §7(点击切换页面)
+  main_level4:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l其它
+      lore:
+        - §7(相当于其它类型的§b成就§7,达到指定要求获取称号与奖励)
+        - §7(点击切换页面)
+  main_level5:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l赞助
+      lore:
+        - §7(相当于§bVIP§7的实现方式,获取VIP后可拥有更多权限)
+        - §7(点击切换页面)
+  main_level6:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l类型:§5§l职位
+      lore:
+        - §7(即官方职位,不同职位有不同称号)
+        - §7(点击切换页面)
+  back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回称号操作
+  pre:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上1页
+  next:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下1页
+  select_tip:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6提示:点击称号选择
+  repair_diamond_1:
+    type: DIAMOND
+    amount: 1
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_3:
+    type: DIAMOND
+    amount: 3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_5:
+    type: DIAMOND
+    amount: 5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_7:
+    type: DIAMOND
+    amount: 7
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_9:
+    type: DIAMOND
+    amount: 9
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_11:
+    type: DIAMOND
+    amount: 11
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_13:
+    type: DIAMOND
+    amount: 13
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  repair_diamond_15:
+    type: DIAMOND
+    amount: 15
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5300§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石武器§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§7(待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+#################################
+#####         奖励          #####
+#################################
+rewards:
+  r1_1:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 150
+      max: 150
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_2:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 200
+      max: 200
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_3:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 250
+      max: 250
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_4:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 300
+      max: 300
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_5:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 350
+      max: 350
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_6:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 400
+      max: 400
+    level: 
+      min: 0
+      max: 0
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_7:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 20
+      max: 20
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_8:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 25
+      max: 25
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_1"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_9:                          #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 30
+      max: 30
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_3"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_10:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 35
+      max: 35
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_5"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_11:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 40
+      max: 40
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_7"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_12:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 45
+      max: 45
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_9"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_13:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 50
+      max: 50
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_11"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_14:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 55
+      max: 55
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_13"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r1_15:                         #奖励类型
+    money:
+      min: 0
+      max: 0
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 60
+      max: 60
+    tip: "升级奖励"
+    costType: ""                 #花费,可留空
+    itemsType: "repair_diamond_15"#物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_1:                          #奖励类型
+    money:
+      min: 100
+      max: 100
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[草民]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_2:                          #奖励类型
+    money:
+      min: 1000
+      max: 1000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[平民]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_3:                          #奖励类型
+    money:
+      min: 10000
+      max: 10000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[公民]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_4:                          #奖励类型
+    money:
+      min: 200
+      max: 200
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[初级矿工]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_5:                          #奖励类型
+    money:
+      min: 3000
+      max: 3000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[挖矿能手]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_6:                          #奖励类型
+    money:
+      min: 15000
+      max: 15000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[挖矿大师]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_7:                          #奖励类型
+    money:
+      min: 2000
+      max: 2000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[破坏狂]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_8:                          #奖励类型
+    money:
+      min: 5000
+      max: 5000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[建筑狂]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_9:                          #奖励类型
+    money:
+      min: 300
+      max: 300
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[初级猎手]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_10:                         #奖励类型
+    money:
+      min: 1500
+      max: 1500
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[强力猎手]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_11:                         #奖励类型
+    money:
+      min: 15000
+      max: 15000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[怪物猎人]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_12:                         #奖励类型
+    money:
+      min: 3000
+      max: 3000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[屠夫]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_13:                         #奖励类型
+    money:
+      min: 500
+      max: 500
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[刺客]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_14:                         #奖励类型
+    money:
+      min: 2000
+      max: 2000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[猎杀者]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r5_15:                         #奖励类型
+    money:
+      min: 20000
+      max: 20000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[裁决者]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r15_1:                         #奖励类型
+    money:
+      min: 1000
+      max: 1000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[YY新人]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r15_2:                         #奖励类型
+    money:
+      min: 5000
+      max: 5000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[YY会员]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r15_3:                         #奖励类型
+    money:
+      min: 20000
+      max: 20000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 0
+      max: 0
+    tip: "获得[YY之星]称号奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空
+  r20_1:                         #奖励类型
+    money:
+      min: 5000
+      max: 5000
+    exp:
+      min: 0
+      max: 0
+    level: 
+      min: 10
+      max: 10
+    tip: "购买VIP奖励"
+    costType: ""                 #花费,可留空
+    itemsType: ""                #物品类型,可留空
+    enchantsType: ""             #附魔类型,可留空

@@ -1,0 +1,26 @@
+name: need
+main: need.Main
+version: 1.0
+softdepend: [lib,ticket,QuickShop,Essentials]
+commands:
+  need:
+    description: none.
+    usage: /<command> ?
+  pay:
+    description: none.
+    usage: /<command> ?
+  tpr:
+    description: none.
+    usage: /<command> ?
+  sell:
+    description: none.
+    usage: /<command> ?
+  stone:
+    description: none.
+    usage: /<command> ?
+  see:
+    description: none.
+    usage: /<command> ?
+  p:
+    description: none.
+    usage: /<command> ?

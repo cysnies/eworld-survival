@@ -1,0 +1,40 @@
+package net.citizensnpcs.npc.entity;
+
+import net.citizensnpcs.Settings;
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.npc.NPC;
+import net.citizensnpcs.api.util.Colorizer;
+import net.citizensnpcs.npc.AbstractEntityController;
+import net.citizensnpcs.util.NMS;
+import net.minecraft.server.v1_6_R2.PlayerInteractManager;
+import net.minecraft.server.v1_6_R2.World;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_6_R2.CraftWorld;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+
+public class HumanController extends AbstractEntityController {
+   public HumanController() {
+      super();
+   }
+
+   protected LivingEntity createEntity(Location at, final NPC npc) {
+      World ws = ((CraftWorld)at.getWorld()).getHandle();
+      EntityHumanNPC handle = new EntityHumanNPC(ws.getServer().getServer(), ws, Colorizer.parseColors(npc.getFullName()), new PlayerInteractManager(ws), npc);
+      handle.setPositionRotation(at.getX(), at.getY(), at.getZ(), at.getYaw(), at.getPitch());
+      handle.getBukkitEntity().teleport(at);
+      Bukkit.getScheduler().scheduleSyncDelayedTask(CitizensAPI.getPlugin(), new Runnable() {
+         public void run() {
+            boolean removeFromPlayerList = Settings.Setting.REMOVE_PLAYERS_FROM_PLAYER_LIST.asBoolean();
+            NMS.addOrRemoveFromPlayerList(HumanController.this.getBukkitEntity(), (Boolean)npc.data().get("removefromplayerlist", removeFromPlayerList));
+         }
+      }, 1L);
+      handle.getBukkitEntity().setSleepingIgnored(true);
+      return handle.getBukkitEntity();
+   }
+
+   public Player getBukkitEntity() {
+      return (Player)super.getBukkitEntity();
+   }
+}

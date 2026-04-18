@@ -1,0 +1,11 @@
+name: ad
+main: ad.Ad
+version: 1.0
+softdepend: [lib]
+commands:
+  ad:
+    description: none.
+    usage: /<command> ?
+  bc:
+    description: none.
+    usage: /<command> ?

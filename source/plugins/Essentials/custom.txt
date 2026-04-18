@@ -1,0 +1,27 @@
+#Customtext
+&6这是一个自定义指令文档.
+&6你能够为指定用户或组创建自定义指令文件:
+&6例如custom_username.txt 或 custom_groupname.txt
+&6翻页请使用:
+&c/customtext 2
+&6你需要三个步骤来添加自定义指令:
+&e-&9 添加别名至custom.txt
+&e-&9 在bukkit.yml的别名(aliases)区域添加一行
+&e-&9 给予玩家'essentials.customtext'权限
+
+&6如果你还没有别名(aliases)区域, 按照以下格式进行添加:
+aliases:
+  vote: customtext
+
+&6以下指令也能够被自定义:
+&c/rules /motd /news /help
+&6支持章节定制:&c /rules grief
+&6你也可以为指令使用自定义别名.
+#
+#vote
+&6如果你添加正确别名至bukkit.yml
+&6当你输入 /vote 会显示此信息
+&4==============结束==============
+#stafflist,onlinestaff
+&6在线人员:
+{PLAYERLIST:MODERATOR} {PLAYERLIST:ADMIN} {PLAYERLIST:OWNER}

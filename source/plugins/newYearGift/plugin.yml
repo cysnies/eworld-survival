@@ -1,0 +1,7 @@
+name: newYearGift
+main: newyeargift.Main
+version: 1.0
+commands:
+  nyg:
+    description: none
+    usage: /<command> ?

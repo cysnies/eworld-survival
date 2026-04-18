@@ -1,0 +1,119 @@
+#功能:
+#>全球商店
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/shop/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#管理权限(管理)
+per_shop_admin: "per.shop.admin"
+#使用全球商店的权限(玩家)
+per_shop_use: "per.shop.use"
+#在全球商店出售的权限
+per_shop_create: "per.shop.create"
+#vip权限(使用VIP手续费配置)
+per_shop_vip: "per.shop.vip"
+#################################
+#####          配置         #####
+#################################
+rateTicket: 250                  #指1点券值多少金币
+interval: 900                    #操作间隔
+check: 600                       #检测过期间隔,单位秒
+last: 120                        #持续时间,单位小时
+min: 800                         #价格下限
+tip: 10000                       #价格达到多少时进行提示
+tax:                             #手续费
+  base: 100                      #基本手续费
+  rate: 10                       #比例手续费,千分之几
+  baseVip: 10                    #vip的基本手续费
+  rateVip: 2                     #vip的比例手续费,千分之几
+item:
+  confirmTimeLimit: 8            #确认时间限制
+  main:
+    info: 4
+#################################
+#####        物品类型       #####
+#################################
+items:
+  main_info:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6全球商店
+      lore:
+        - "§a(顾客)§3购买物品(用金币): §c左键§7点击物品(需要确认)"
+        - "§a(顾客)§3购买物品(用点券): §cshift+左键§7点击物品(需要确认)"
+        - "§7--------------------------------------------------------"
+        - "§b(店主)§3出售物品: §7手拿出售物品,输入§a/shop 价格"
+        - "§b(店主)§3取回物品: §c右键§7点击物品(需要确认)"
+        - "§b(店主)§3切换是否允许用点券购买: §cshift+右键§7点击物品(需要确认)"
+        - "§7--------------------------------------------------------"
+        - "§c有效期: §7每次出售有效期为§55§7天"
+        - "§c过期物品: §7自动下架,在奖励列表里取回"
+        - "§c(注意:出售是手中物品全部一次性出售!)"
+        - "§7(对于允许用点券购买的商品,花费的点券=花费的金币/§5{0}§7)"
+  main_first:
+    type: EMPTY_MAP
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6第1页
+      lore:
+      - '§3当前页: §6{0}'
+      - '§3最大页: §6{1}'
+  main_pre10:
+    type: PAPER
+    amount: 10
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上10页
+  main_pre5:
+    type: PAPER
+    amount: 5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上5页
+  main_pre1:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上1页
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  main_next1:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下1页
+  main_next5:
+    type: PAPER
+    amount: 5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下5页
+  main_next10:
+    type: PAPER
+    amount: 10
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下10页
+  main_end:
+    type: EMPTY_MAP
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6最后一页

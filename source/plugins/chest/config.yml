@@ -1,0 +1,109 @@
+#功能:
+#>宝箱
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/chest/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#插件管理权限
+per_chest_admin: "per.chest.admin"
+#################################
+#####          配置         #####
+#################################
+disappear: false                 #关宝箱后宝箱是否自动消失
+emptyRemove: false               #true表示如果刷新结束后箱子中无物品则删除箱子
+pageSize: 10                     #一页显示数量
+chestItem: 89                    #用什么显示宝箱
+name: "happyVillager"
+offset: 0.9
+speed: 3.5
+count: 22
+showRange: 20                    #特效显示范围
+volume: 1.6
+pitch: 1.0
+#################################
+#####        物品类型       #####
+#################################
+items:
+  low:                           #低级
+    min: 1
+    max: 4
+    inherit:
+      - "low_food"
+      - "low_weapon"
+      - "low_armor"
+  low_food:
+    inherit:
+      - "low_food_1"
+      - "low_food_2"
+      - "low_food_3"
+      - "low_food_4"
+  low_food_1:
+    type: BREAD
+    amount: 2
+    chance: 150
+  low_food_2:
+    type: MELON
+    amount: 3
+    chance: 200
+  low_food_3:
+    type: COOKIE
+    amount: 3
+    chance: 150
+  low_food_4:
+    type: ROTTEN_FLESH
+    amount: 4
+    chance: 200
+  low_weapon:
+    inherit:
+      - "low_weapon_1"
+      - "low_weapon_2"
+      - "low_weapon_3"
+      - "low_weapon_4"
+  low_weapon_1:
+    type: WOOD_SWORD
+    chance: 150
+  low_weapon_2:
+    type: STONE_SWORD
+    chance: 50
+  low_weapon_3:
+    type: IRON_SWORD
+    chance: 18
+  low_weapon_4:
+    type: BOW
+    damage: 320
+    chance: 20
+  low_armor:
+    inherit:
+      - "low_armor_1"
+      - "low_armor_2"
+      - "low_armor_3"
+      - "low_armor_4"
+  low_armor_1:
+    type: LEATHER_HELMET
+    chance: 100
+  low_armor_2:
+    type: LEATHER_CHESTPLATE
+    chance: 60
+  low_armor_3:
+    type: LEATHER_LEGGINGS
+    chance: 80
+  low_armor_4:
+    type: LEATHER_BOOTS
+    chance: 70
+#################################
+#####        附魔类型       #####
+#################################
+enchants:
+  low:                           #附魔类型名
+    - "20 0 1 true false"        #成功几率(0-100) 附魔类型 附魔等级 是否合适(指物品类型与附魔是否匹配) 是否安全(指是否限制附魔等级上限)
+    - "8 0 2 true false"
+    - "18 16 1 true false"
+    - "6 16 2 true false"
+    - "9 19 1 true false"
+    - "18 48 1 true false"
+    - "8 48 2 true false"
+    - "15 49 1 true false"

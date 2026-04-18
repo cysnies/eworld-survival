@@ -1,0 +1,58 @@
+#怪物加强信息配置
+#################################
+#####         配置          #####
+#################################
+strength:
+  assult_zombie_normal:          #加强类型,唯一性
+    inherit:                     #继承
+    data:                        #属性,可不完整
+      show: false                #怪物出现时是否全服提示(特殊,不保存到怪物属性里)
+      ai: 2                      #AI
+      spawnReason:               #出生原因
+      camp: good                 #good,bad,none
+      range: 16.0                #视线范围,实数
+      speed: 0.23                #速度,实数
+      nowPath: 1                 #当前路径,可为任何值
+      path:                      #路径列表,每节都是实数,x,y,z,yaw,pitch
+        - "1.0 1.0 1.0 0.0 0.0"
+      name: "&c纳粹僵尸"         #怪物名
+      showLevel: true            #true,false
+      levels:                    #称号列表(称号ID 最小等级-最大等级 成功率(0-1000))
+        - "2 3-5 100"
+        - "3 1-1 10"
+        - "5 7-9 50"
+      recover: 1.0               #回血,可为0(负等同于0)
+      potions:                   #药水
+        selfChance: 100          #触发药水几率(0-1000)(受实体伤害时检测)
+        self: "self_low"         #对自己使用的药水类型
+        enemyChance: 200         #触发药水几率(0-1000)(攻击实体造成伤害时检测)
+        enemy: ""                #对敌人使用药水
+      skills:                    #技能列表
+        damageChance: 200        #触发技能几率(0-1000)
+        damageSkill: "damage_low"#受伤时触发
+        attackChance: 0
+        attackSkill: ""          #攻击时触发
+      shoot: true                #true,false
+      drop:                      #怪物死亡掉落
+        power: "2-5"             #掉落战功,"最小战功-最大战功"
+        gold: "1-3"              #掉落金币,"最小金币-最大金币"
+        exp: "3-7"               #掉落经验,"最小经验-最大经验"
+        items:                   #掉落物品类型
+      visible: false             #怪物名是否永久可见
+      removeFaraway: false       #远距离是否消失
+      initHealth: 20             #初始生命值,>=1
+      initMaxHealth: 20          #最大生命值,>=1
+      equip:                     #装备,物品类型(随机取一个)
+        weaponChance: 10         #有此装备几率,0-100
+        weapon:
+        helmetChance: 10
+        helmet:
+        chestplateChance: 10
+        chestplate:
+        leggingsChance: 10
+        leggings:
+        bootsChance: 10
+        boots:
+#######################################################################
+  assult_zombie_1:
+    inherit: "assult_zombie_normal"

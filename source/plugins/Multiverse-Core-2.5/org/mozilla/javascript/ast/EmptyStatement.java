@@ -1,0 +1,28 @@
+package org.mozilla.javascript.ast;
+
+public class EmptyStatement extends AstNode {
+   public EmptyStatement() {
+      super();
+      this.type = 128;
+   }
+
+   public EmptyStatement(int pos) {
+      super(pos);
+      this.type = 128;
+   }
+
+   public EmptyStatement(int pos, int len) {
+      super(pos, len);
+      this.type = 128;
+   }
+
+   public String toSource(int depth) {
+      StringBuilder sb = new StringBuilder();
+      sb.append(this.makeIndent(depth)).append(";\n");
+      return sb.toString();
+   }
+
+   public void visit(NodeVisitor v) {
+      v.visit(this);
+   }
+}

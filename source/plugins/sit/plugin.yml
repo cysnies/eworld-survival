@@ -1,0 +1,8 @@
+name: sit
+main: sit.Sit
+version: 1.0
+softdepend: [lib,ProtocolLib]
+commands:
+  sit:
+    description: none.
+    usage: /<command> ?

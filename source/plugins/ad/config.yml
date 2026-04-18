@@ -1,0 +1,115 @@
+#功能:
+#>广告
+#>公告->喇叭
+#>聊天栏广告
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/ad/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#插件管理权限
+per_ad_admin: "per.ad.admin"
+#发广告的权限
+per_ad_use: "per.ad.use"
+#删除任意玩家广告的权限
+per_ad_remove: "per.ad.remove"
+#创建聊天栏广告的权限
+per_ad_chat_create: "per.ad.chat.create"
+#################################
+#####          配置         #####
+#################################
+clearInterval: 600               #清理过期广告的检测间隔,单位秒
+cost: 100                        #发广告花费
+set: 10                          #修改广告内容花费
+max: 3000                        #每个广告最大投入广告费
+day: 7                           #每个广告持续的天数
+last: 20                         #每个广告持续时间,单位秒
+check: 5                         #多少秒检测一次
+chance: 20                       #每次检测成功率
+item:
+  interval: 500                  #查看间隔,单位毫秒
+  confirmTimeLimit: 8            #确认时间限制
+  main:
+    info: 4
+    add: 20
+    set: 22
+    upgrade: 24
+    remove: 40
+#################################
+#####         物品          #####
+#################################
+items:
+  main_info:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3你的广告信息:"
+      lore:
+        - "§3当前: {0}"
+        - "§3广告费: §5{0}"
+        - "§7(期限:§3{0}§7)"
+  main_add:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3发广告
+      lore:
+        - "§7(花费§5{0}§7金币)"
+        - "§7(每次广告有效期§57§7天)"
+        - "§7(需要输入)"
+  main_set:
+    type: ENDER_PEARL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3修改广告内容
+      lore:
+        - "§7(花费§5{0}§7金币)"
+        - "§7(需要输入)"
+  main_upgrade:
+    type: EMERALD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3增加广告花费
+      lore:
+        - "§7(花费越多每次被选中的几率越大)"
+        - "§7(需要输入)"
+  main_remove:
+    type: RECORD_3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c删除广告
+      lore:
+        - "§7(不会退还花费)"
+        - "§7(需要确认)"
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+#################################
+#####       公告->喇叭      #####
+#################################
+big:                             #大喇叭
+  cost: 3                        #花费的点券
+  last: 60                       #持续的时间,单位秒
+  max: 100                       #最大的字符数
+#################################
+#####       聊天栏广告      #####
+#################################
+chat:
+  pageSize: 10                   #一页显示多少项
+  gold: 1                        #1金币=多少投入
+  ticket: 250                    #1点券=多少投入
+  maxLine: 5                     #最大行数
+  max: 30                        #每行最大字符数
+  check: 60                      #检测间隔,单位秒
+  chance: 20                     #每次成功几率,0-100

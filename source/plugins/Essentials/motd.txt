@@ -1,0 +1,6 @@
+&c欢迎, {PLAYER}&c!
+&f输入 &c/help&f 查看帮助.
+&6玩家列表: {PLAYERLIST}
+&6现金余额: {BALANCE}
+&6现在时间:&r {TIME}{DATE}
+&6在线人数:&r {ONLINE}

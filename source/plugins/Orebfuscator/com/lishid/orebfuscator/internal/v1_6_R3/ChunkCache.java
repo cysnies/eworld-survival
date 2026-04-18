@@ -1,0 +1,74 @@
+package com.lishid.orebfuscator.internal.v1_6_R3;
+
+import com.lishid.orebfuscator.Orebfuscator;
+import com.lishid.orebfuscator.OrebfuscatorConfig;
+import com.lishid.orebfuscator.internal.IChunkCache;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.util.HashMap;
+import net.minecraft.server.v1_6_R3.RegionFile;
+
+public class ChunkCache implements IChunkCache {
+   private static final HashMap cachedRegionFiles = new HashMap();
+
+   public ChunkCache() {
+      super();
+   }
+
+   private synchronized RegionFile getRegionFile(File folder, int x, int z) {
+      File path = new File(folder, "region");
+      File file = new File(path, "r." + (x >> 5) + "." + (z >> 5) + ".mcr");
+
+      try {
+         RegionFile regionFile = (RegionFile)cachedRegionFiles.get(file);
+         if (regionFile != null) {
+            return regionFile;
+         } else {
+            if (!path.exists()) {
+               path.mkdirs();
+            }
+
+            if (cachedRegionFiles.size() >= OrebfuscatorConfig.MaxLoadedCacheFiles) {
+               this.clearCache();
+            }
+
+            regionFile = new RegionFile(file);
+            cachedRegionFiles.put(file, regionFile);
+            return regionFile;
+         }
+      } catch (Exception e) {
+         try {
+            file.delete();
+         } catch (Exception var8) {
+            Orebfuscator.log((Throwable)e);
+         }
+
+         return null;
+      }
+   }
+
+   public DataInputStream getInputStream(File folder, int x, int z) {
+      RegionFile regionFile = this.getRegionFile(folder, x, z);
+      return regionFile.a(x & 31, z & 31);
+   }
+
+   public DataOutputStream getOutputStream(File folder, int x, int z) {
+      RegionFile regionFile = this.getRegionFile(folder, x, z);
+      return regionFile.b(x & 31, z & 31);
+   }
+
+   public synchronized void clearCache() {
+      for(RegionFile regionFile : cachedRegionFiles.values()) {
+         try {
+            if (regionFile != null) {
+               regionFile.c();
+            }
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+      }
+
+      cachedRegionFiles.clear();
+   }
+}

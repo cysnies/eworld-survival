@@ -1,0 +1,287 @@
+#功能:
+#>村庄
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/town/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#管理权限
+per_town_admin: "per.town.admin"
+#################################
+#####         配置          #####
+#################################
+town:
+  players:
+    base: 10
+    fix: 5
+  minGive: 100                   #每次贡献金币的最少数量
+  pageSize: 10                   #村庄排行页面大小
+  safeLockLevel: 1               #村庄设置安全锁需要等级
+  maxLevel: 10                   #村庄最大等级
+  setNameCost: 800               #设置村庄名每次花费
+  maxNameLength: 9               #村庄名最大长度
+  healLevel: 3
+  fix: 50000
+  add: 20000
+  diy:
+    id: 158
+    leader: "&6[村长]{0}"
+    staff: "&e[村员]{0}"
+  pre:
+    leader: "&b[村长]"
+    staff: "&2[村员]"
+  status:
+    online: "&a"
+    offline: "&7"
+  size: 150                      #村庄的固定地皮大小(只能第一次修改)
+  world: "townWorld"             #村庄的世界名(只能第一次修改)
+  level: 200                     #创建的村庄的领地等级
+  kick: 7                        #可以踢出加入服务器多少天后的村员
+  ask: 15                        #村庄最大请求数量
+  range:                         #村庄领地的竖直范围
+    min: 1
+    max: 255
+  name: "{0}号村庄"              #默认领地自动生成的村庄名
+  show:                          #显示村庄范围
+    id: "35:14"
+    height: 128
+  spawn:                         #村庄传送点(默认水平在中央)
+    height: 70                   #村庄传送点高度
+    radius: 2                    #保护大小
+    id: 7                        #保护方块的ID
+  addFlags:                      #创建村庄领地后自动添加的标记
+    - "admin:0"
+    - "banBreak:0"
+    - "banPlace:0"
+    - "banIgnite:0"
+    - "banDoor:0"
+    - "banContact:0"
+    - "banButton:0"
+    - "banContainer:0"
+    - "banUseOther:0"
+    - "banBucket:0"
+    - "banPvp:0"
+    - "protect:0"
+    - "banShop:0"
+    - "banPotionHurt:0"
+    - "banTp:0"
+#################################
+#####         职位          #####
+#################################
+pos:
+  - "0 村民"
+  - "1 村长"
+#################################
+#####         界面          #####
+#################################
+item:
+  interval: 500
+  confirmTimeLimit: 8
+  main:
+    giveInfo: 2
+    give: 6
+    rank: 17
+    safeLock: 35
+    setName: 13
+    ask: 0
+    info: 4
+    get: 20
+    join: 22
+    tp: 31
+    del: 24
+    quit: 44
+    yesOne: 9
+    noOne: 18
+    yesAll: 27
+    noAll: 36
+    safe: 8
+    tip: 26
+#################################
+#####         物品          #####
+#################################
+items:
+  main_giveInfo:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l贡献值说明
+      lore:
+      - §7(村庄的经验值来源于玩家的贡献值)
+      - §7(玩家贡献值增加时村庄经验值也会增加)
+      - '§7(比如玩家贡献值+1,那么村庄经验值也会+1)'
+      - '§7(玩家贡献值来源:1.贡献金币 2.在线时间)'
+      - '§7----------------------------------'
+      - '§7在线时间增加贡献值说明:'
+      - '§71.玩家平均在线每分钟会增加一次贡献值(2-5)'
+      - '§72.每次增加的数量默认为2'
+      - '§73.如果玩家有[活跃]状态,则增加数量+2'
+      - '§74.如果玩家有[存活]状态,则增加数量+1'
+  main_give:
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l贡献金币
+      lore:
+      - §7(贡献金币以增加贡献值)
+      - §7(每次贡献金币的最少数量为§5{0}§7)
+      - §7(1金币=1贡献值)
+      - §7(需要输入)
+  main_rank:
+    type: REDSTONE_TORCH_ON
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l村庄排行榜
+      lore:
+      - §7(点击查看村庄排行榜第一页)
+      - §7(查看其它页可用命令§e/town rank 第几页§7)
+  main_safeLock:
+    type: TRIPWIRE_HOOK
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l村庄安全锁(只能村长设置)
+      lore:
+      - '§a开启安全锁有两个效果:'
+      - §a - 村员无法夺取村长职位
+      - §a - 村长无法退出村庄
+      - §7(可有效防止意外及误操作)
+      - §7(点击开启/关闭)
+      - §7(需要村庄等级为§5{0}§7)
+      - §7(当前状态:{0}§7)
+  main_setName:
+    type: APPLE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l设置村庄名(只能村长设置)
+      lore:
+      - §7(村庄名长度不能超过村庄等级)
+      - §7(可以使用颜色字符)
+      - §7(每次设置花费§5{0}§7村庄经验)
+      - §7(需要输入)
+  main_tip:
+    type: REDSTONE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§c§l[红石治疗]'
+      lore:
+        - "§7手拿§6红石§7右键村员可以治疗对方"
+        - "§7(需要村庄等级为§5{0}§7)"
+  main_ask:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§a§l申请加入列表:'
+  main_yesOne:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a同意请求
+      lore:
+        - §7(需要输入)
+  main_noOne:
+    type: RECORD_3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c拒绝请求
+      lore:
+        - §7(需要输入)
+  main_yesAll:
+    type: RECORD_5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §b同意所有请求
+      lore:
+        - §7(需要确认)
+  main_noAll:
+    type: RECORD_4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4拒绝所有请求
+      lore:
+        - §7(需要确认)
+  main_info:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l村庄信息
+      lore:
+        - '§3村庄ID: §6{0} §3村庄名: §6{1} §3村长: §6{2}'
+        - '§3村庄等级: §6{0}级 §3村庄经验: §6{1}/{2}'
+        - '§3村庄领地: §6{0} §3村庄人数: §6{1}/{2} §3活跃/存活度: §6{3}/{4}'
+        - '§5+=====村员信息=====+ §7<玩家名:贡献值/活跃/存活>'
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  main_get:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a获取村长职位
+      lore:
+        - §7(需要村庄当前无村长或村长'存活'状态为否)
+        - §7(需要玩家当前为'活跃'状态)
+        - §7(需要确认)
+  main_join:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a加入指定村庄
+      lore:
+        - §7(需要输入)
+  main_del:
+    type: RECORD_3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c踢出村员
+      lore:
+        - §7(需要村员'存活'状态为否)
+        - §7(需要村员加入服务器时间超过{0}天)
+        - §7(需要输入)
+  main_quit:
+    type: RECORD_4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4退出村庄
+      lore:
+        - §7(需要确认)
+  main_safe:
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3安全模式
+      lore:
+        - '§3当前: {0}'
+        - '§7(开启安全模式后村员无法伤害你)'
+        - '§7(点击切换)'
+  main_tp:
+    type: NETHER_STAR
+    damage: 1
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6传送村庄
+      lore:
+      - §7(输入/town快速传送村庄)

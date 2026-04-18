@@ -1,0 +1,9 @@
+name: cus
+main: cus.Cus
+version: 1.0
+load: startup
+softdepend: [lib]
+commands:
+  cus:
+    description: none.
+    usage: /<command> ?

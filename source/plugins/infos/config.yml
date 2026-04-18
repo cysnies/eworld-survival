@@ -1,0 +1,1001 @@
+#功能:
+#>tab
+#>每周贡献
+#>每日礼包
+#>玩家信息
+#>服务器信息
+#>性别心情
+#>升级
+#>自动称号升级
+#>特效
+#>邀请
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/infos/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#插件管理权限
+per_infos_admin: "per.infos.admin"
+#查看其它玩家信息的权限
+per_infos_playerInfo_other: "per.infos.playerInfo.other"
+#使用宣传栏宣传的权限
+per_infos_bc: "per.infos.bc"
+#免费领取礼包的权限
+per_infos_gift: "per.infos.gift"
+#################################
+#####           tab         #####
+#################################
+tab:
+  money:
+    pre: "&5[第*]&b"
+    period: 1800                 #长期检测间隔,单位秒
+    start: 50000                 #进排行的最少数值
+    interval: 60                 #短期检测间隔,单位秒
+  power:
+    pre: "&6[第*]&b"
+    period: 2000                 #长期检测间隔,单位秒
+    start: 10000                 #进排行的最少数值
+    interval: 120                #短期检测间隔,单位秒
+#################################
+#####       每周贡献        #####
+#################################
+week:
+#################################
+#####       每日礼包        #####
+#################################
+gift:                            #礼包ID(可以不递增) 次数 重置间隔,单位分钟 花费(战斗力) 是否直接添加 提示(此外对应的物品类型是'gift1')
+  - "1 5 2880 100 false &6勇者之塔领取"
+  - "2 5 2880 130 false &6勇者之塔领取"
+  - "3 5 2880 160 false &6勇者之塔领取"
+  - "4 8 4320 300 false &6骷髅逃亡领取"
+#################################
+#####          配置         #####
+#################################
+item:
+  interval: 500                  #查看间隔
+  seeInterval: 1500              #触发see的间隔
+  confirmTimeLimit: 8            #确认时间限制
+  upgradeName: "&a确认升级家园吗?"
+  upgradeLore:
+  pi:
+    name: "&3&l{0}"              #玩家名的显示
+  main:
+    debt: 27
+    fasthelp: 44
+    webshop: 17
+    info: 4
+    serverInfo: 0
+    lands1: 12
+    lands2: 21
+    lands3: 30
+    lands4: 39
+    rewards: 18
+    level: 23
+    ticket: 8
+    friend: 9
+    addBlack: 26
+    showBlack: 35
+    town: 32
+    up: 14
+    ad: 41
+  set:
+    bind: 0
+    buyJoin: 4
+    upgrade: 8
+    chatColor: 12
+    chatChannel: 14
+    spawn: 18
+    xq: 27
+    sit: 29
+    see: 31
+    moveMsg: 33
+    serverMsg: 38
+    deathMsg: 40
+    sideMsg: 42
+    sex: 36
+  tp:
+    house: 0
+    spawn: 4
+    town: 8
+    shop: 13
+    mine1: 28
+    mine2: 30
+    mine3: 32
+    mine4: 34
+    mon: 36
+    attack: 38
+    isle: 40
+    tower: 42
+    run: 44
+  join:
+    info: 4
+#命令(s指服务端命令;p指玩家命令)
+cmd:                             #界面 位置 <s/p> 命令(<p>指玩家名)
+  - "tp 0 p /house"
+  - "tp 4 p /spawn"
+  - "tp 8 p /town"
+  - "tp 13 p /warp shop"
+  - "tp 28 p /warp mine1"
+  - "tp 30 p /warp mine2"
+  - "tp 32 p /warp mine3"
+  - "tp 34 p /warp mine4"
+  - "tp 36 p /warp mon"
+  - "tp 38 p /warp attack"
+  - "tp 40 p /warp isle"
+  - "tp 42 p /warp tower"
+  - "tp 44 p /warp run"
+#玩家信息
+playerInfo:
+  emptyRight: true               #是否开启空手右键玩家自动发出命令'/cmd 对方'
+  emptyRightInterval: 1000       #空手右键玩家间隔
+  interval: 3                    #每隔多少分钟更新一次所有在线玩家的信息
+  power:
+    death: 15                    #死亡减少多少战斗力
+    suck: 60                     #[吸灵]吸收多少玩家掉落的战斗力(0-100)
+    kill: 40                     #杀玩家掠夺对方多少战斗力
+    head: 30                     #掠夺的战斗力达到多少时可能掉头
+    headChance: 1                #掉头的几率多少
+    headTipRange: 10.0           #提示范围
+#服务器信息
+serverInfo:
+  interval: 5                    #每隔多少分钟更新一次服务器信息,单位分钟(必须是1-5分钟)
+  delay: 10                      #下面的延时检测延时多少秒
+  clear:                         #自动清除数据库中'玩家日在线时间信息'表里的多余数据,节省空间(服务器启动时延时检测)
+    day: 60                      #自动清除的检测天数
+  alive:                         #存活玩家数量检测(服务器启动时延时检测)
+    day: 30                      #多少天内
+    time: 5                      #需要至少在线多少小时
+  active:                        #活跃玩家数量检测(服务器启动时延时检测)
+    day: 7
+    time: 10  
+#################################
+#####       性别心情        #####
+#################################
+xq:
+  interval: 3000                 #设置间隔
+  per: "per.infos.xq"            #设置心情的权限
+  cost: 100                      #每次设置心情的花费
+#################################
+#####         升级          #####
+#################################
+upgrade:
+  levels:
+    - "1 1000 1"                 #等级 花费 对应添加的称号ID
+    - "2 5000 2"
+    - "3 10000 3"
+    - "4 30000 4"
+    - "5 50000 5"
+    - "6 60000 6"
+    - "7 70000 7"
+    - "8 80000 8"
+    - "9 90000 9"
+    - "10 100000 10"
+    - "11 110000 11"
+    - "12 120000 12"
+    - "13 130000 13"
+    - "14 140000 14"
+    - "15 150000 15"
+#################################
+#####     自动称号升级      #####
+#################################
+up:
+  interval: 313                  #检测间隔,单位秒
+#################################
+#####         特效          #####
+#################################
+spec:
+  move:                          #移动时显示的特效
+    per: "per.infos.spec.move"   #显示此特效的权限
+    interval: 8                  #显示间隔,单位tick
+    range: 15                    #显示范围
+    name: "fireworksSpark"
+    offset: 0.3
+    speed: 0.08
+    count: 12
+#################################
+#####         物品          #####
+#################################
+items:
+  tp_house:
+    type: APPLE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l家园
+  tp_spawn:
+    type: NETHER_STAR
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l重生点
+  tp_town:
+    type: SAPLING
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l村庄
+  tp_shop:
+    type: BEACON
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l系统商店
+  tp_mine1:
+    type: GOLD_ORE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l系统矿洞一
+      lore:
+      - §7(早上11点刷新)
+  tp_mine2:
+    type: GOLD_ORE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l系统矿洞二
+      lore:
+      - §7(下午1点刷新)
+  tp_mine3:
+    type: GOLD_ORE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l系统矿洞三
+      lore:
+      - §7(晚上8点刷新)
+  tp_mine4:
+    type: GOLD_ORE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l系统矿洞四
+      lore:
+      - §7(晚上10点刷新)
+  tp_mon:
+    type: SKULL_ITEM
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §c§l系统刷怪区
+  tp_attack:
+    type: SKULL_ITEM
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §c§l怪物攻城
+  tp_isle:
+    type: SKULL_ITEM
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §c§l恶魔岛
+  tp_tower:
+    type: SKULL_ITEM
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §c§l勇者之塔
+  tp_run:
+    type: SKULL_ITEM
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §c§l骷髅逃亡
+################gift#################
+  main_tp:
+    type: NETHER_STAR
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l传送列表
+  main_set:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l设置
+################gift#################
+  gift1:
+    inherit:
+      - "gift_repair_iron"
+      - "gift_normal"
+  gift2:
+    inherit:
+      - "gift_repair_gold"
+      - "gift_normal"
+  gift3:
+    inherit:
+      - "gift_repair_diamond"
+      - "gift_normal"
+  gift4:
+    inherit:
+      - "gift_repair_iron"
+      - "gift_repair_gold"
+      - "gift_repair_diamond"
+#################################
+  gift_normal:                    #普通物品
+    inherit:
+      - "gift_normal_1"
+      - "gift_normal_2"
+      - "gift_normal_3"
+      - "gift_normal_4"
+      - "gift_normal_5"
+      - "gift_normal_6"
+      - "gift_normal_7"
+      - "gift_normal_8"
+      - "gift_normal_9"
+      - "gift_normal_10"
+#################################
+  gift_normal_1:
+    type: IRON_INGOT
+    chance: 100
+  gift_normal_2:
+    type: GOLD_INGOT
+    chance: 80
+  gift_normal_3:
+    type: DIAMOND
+    chance: 50
+  gift_normal_4:
+    type: EMERALD
+    chance: 80
+  gift_normal_5:
+    type: SKULL_ITEM
+    damage: 1
+    chance: 1
+  gift_normal_6:
+    type: CHAINMAIL_HELMET
+    chance: 35
+  gift_normal_7:
+    type: CHAINMAIL_CHESTPLATE
+    chance: 20
+  gift_normal_8:
+    type: CHAINMAIL_LEGGINGS
+    chance: 25
+  gift_normal_9:
+    type: CHAINMAIL_BOOTS
+    chance: 40
+  gift_normal_10:
+    type: EXP_BOTTLE
+    amount: 32
+    chance: 80
+#################################
+  gift_repair_iron:               #铁修复石
+    inherit:
+      - "gift_repair_iron_1"
+      - "gift_repair_iron_2"
+      - "gift_repair_iron_3"
+  gift_repair_gold:               #金修复石
+    inherit:
+      - "gift_repair_gold_1"
+      - "gift_repair_gold_2"
+      - "gift_repair_gold_3"
+  gift_repair_diamond:            #钻石修复石
+    inherit:
+      - "gift_repair_diamond_1"
+      - "gift_repair_diamond_2"
+      - "gift_repair_diamond_3"
+#################################
+  gift_repair_iron_1:
+    chance: 150
+    type: IRON_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[劣质修复石]§f铁"
+      lore:
+      - "§5+劣质修复石+"
+      - "§3恢复铁制装备§580§3耐久"
+      - "§3恢复铁制武器§540§3耐久"
+      - "§3恢复铁制工具§520§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_iron_2:
+    chance: 50
+    type: IRON_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f铁"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复铁制装备§5180§3耐久"
+      - "§3恢复铁制武器§5100§3耐久"
+      - "§3恢复铁制工具§550§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_iron_3:
+    chance: 15
+    type: IRON_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[完美修复石]§f铁"
+      lore:
+      - "§5+完美修复石+"
+      - "§3恢复铁制装备§5300§3耐久"
+      - "§3恢复铁制武器§5170§3耐久"
+      - "§3恢复铁制工具§590§3耐久"
+      - "§3+不影响附魔+"
+      - "§a+不会减少脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+#################################
+  gift_repair_gold_1:
+    chance: 150
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[劣质修复石]§f金"
+      lore:
+      - "§5+劣质修复石+"
+      - "§3恢复金,链甲装备§580§3耐久"
+      - "§3恢复金武器,弓§530§3耐久"
+      - "§3恢复金工具§510§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_gold_2:
+    chance: 50
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f金"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复金,链甲装备§5180§3耐久"
+      - "§3恢复金武器,弓§580§3耐久"
+      - "§3恢复金工具§530§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_gold_3:
+    chance: 15
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[完美修复石]§f金"
+      lore:
+      - "§5+完美修复石+"
+      - "§3恢复金,链甲装备§5300§3耐久"
+      - "§3恢复金武器,弓§5140§3耐久"
+      - "§3恢复金工具§560§3耐久"
+      - "§3+不影响附魔+"
+      - "§a+不会减少脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+#################################
+  gift_repair_diamond_1:
+    chance: 150
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[劣质修复石]§f钻石"
+      lore:
+      - "§5+劣质修复石+"
+      - "§3恢复钻石装备§5150§3耐久"
+      - "§3恢复钻石武器§5100§3耐久"
+      - "§3恢复钻石工具§580§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_diamond_2:
+    chance: 50
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[修复石]§f钻石"
+      lore:
+      - "§5+修复石+"
+      - "§3恢复钻石装备§5350§3耐久"
+      - "§3恢复钻石武器§5250§3耐久"
+      - "§3恢复钻石工具§5180§3耐久"
+      - "§3+不影响附魔+"
+      - "§3+会减少1脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(§3合成升级§7:相同修复石放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+  gift_repair_diamond_3:
+    chance: 15
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§3[完美修复石]§f钻石"
+      lore:
+      - "§5+完美修复石+"
+      - "§3恢复钻石装备§5530§3耐久"
+      - "§3恢复钻石武器§5400§3耐久"
+      - "§3恢复钻石工具§5300§3耐久"
+      - "§3+不影响附魔+"
+      - "§a+不会减少脆弱度+"
+      - "§7(§3修复物品§7:待修复物放物品栏第一格)"
+      - "§7(右键任意方块使用)"
+#################################
+  back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  xq_del:
+    type: RECORD_3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c§l取消心情
+  xq_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回设置界面
+  xq:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3心情
+  set_bind:
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l绑定QQ
+      lore:
+      - §7(不绑定QQ账号被盗后可能无法找回!!!)
+      - §4(请看到后尽快绑定!!!)
+  main_debt:
+    type: RECORD_4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c§l债务
+      lore:
+      - §7(指当前查看的玩家的)
+  main_webshop:
+    type: WATCH
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l全球商店
+      lore:
+        - "§7(出售物品需要获得[砂砾]称号)"
+  main_fasthelp:
+    type: COMPASS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l快速帮助
+      lore:
+        - §7(点击查看)
+  main_join:
+    type: ENDER_PEARL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l邀请玩家
+      lore:
+        - §7(可以获得免费的五钻VIP哦~)
+  set_sex:
+    type: ENDER_PEARL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3改变性别
+      lore:
+        - §3当前:§f{0}
+        - §7(点击改变)
+  set_spawn:
+    type: NETHER_STAR
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3死亡重生位置
+      lore:
+        - '§3当前: §6{0}'
+        - '§7(点击切换)'
+  set_xq:
+    type: APPLE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3设置心情
+      lore:
+        - §3当前:§f{0}
+        - §7(花费§5{1}§7金币/次)
+        - '§7(需要获得[红石]或[蓝钻VIP]称号)'
+        - §7(点击选择)
+  main_info:
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3玩家名
+  main_serverInfo:
+    type: MAP
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §b§l+++E世界§b§l+++
+  main_lands1:
+    type: FENCE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l领地列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_lands2:
+    type: FENCE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §b§l小区列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_lands3:
+    type: FENCE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l地皮列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_lands4:
+    type: FENCE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l出售的地皮列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_rewards:
+    type: REDSTONE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l奖励列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_home:
+    type: NETHER_STAR
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l传送家园
+      lore:
+      - §7(私人+安全)
+      - §7(无法添加他人权限)
+  main_shop:
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l传送系统商城
+  set_upgrade:
+    type: EMERALD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §b§l升级家园
+      lore:
+      - §7(每次增加10高度,花费§33000§7金币)
+      - §7(需要确认)
+  set_sit:
+    type: WOOD_STAIRS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l坐椅功能
+      lore:
+      - '§a当前: §5{0}'
+      - "§7(高空建筑时可关闭)"
+      - '§7(点击切换)'
+  set_see:
+    type: EYE_OF_ENDER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l显示其它玩家
+      lore:
+      - '§a当前: {0}'
+      - "§7(玩家多导致卡时可关闭)"
+      - '§7(点击切换)'
+  main_level:
+    type: BOOK
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l称号操作
+  main_ticket:
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l点券操作
+      lore:
+        - "§7- VIP说明"
+        - "§7- 点券说明"
+        - "§7- 购买链接"
+        - "§7- 卡密说明"
+        - "§7- 无偿赞助"
+        - "§7- 首充大礼包"
+        - "§7- 购买金币"
+  set_serverMsg:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l玩家进出服务器提示
+      lore:
+      - '§a当前: §5{0}'
+      - '§7(感觉提示烦时可关闭)'
+      - '§7(点击切换)'
+  set_deathMsg:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l玩家死亡信息
+      lore:
+      - '§a当前: §5{0}'
+      - '§7(感觉提示烦时可关闭)'
+      - '§7(点击切换)'
+  set_sideMsg:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l侧边栏信息
+      lore:
+      - '§a当前: §5{0}'
+      - '§7(感觉显示烦时可关闭)'
+      - '§7(点击切换)'
+  set_moveMsg:
+    type: STRING
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l行走特效
+      lore:
+      - '§a当前: §5{0}'
+      - '§7(PVP时可关闭)'
+      - '§7(点击切换)'
+  main_friend:
+    type: SKULL_ITEM
+    damage: 4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l好友列表
+      lore:
+      - §7(指当前查看的玩家的)
+  main_addBlack:
+    type: ENDER_PEARL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l将他添加到黑名单
+      lore:
+        - "§7(需要确认)"
+  main_showBlack:
+    type: EYE_OF_ENDER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l黑名单列表
+      lore:
+        - "§7(加黑名单可取消显示对方聊天信息)"
+        - §7(指当前查看的玩家的)
+  set_chatColor:
+    type: PAPER
+    damage: 6
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l聊天颜色
+      lore:
+        - "§a当前: §{0}{1}{0}"
+        - "§7(需要获得[紫钻VIP]称号)"
+        - "§7(点击选择)"
+  set_chatChannel:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l聊天频道
+      lore:
+      - '§a当前: §5{0}'
+      - '§7(点击切换)'
+  main_ad:
+    type: SIGN
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l广告宣传
+      lore:
+      - '§7(显示在侧边栏)'
+      - '§7(需要获得[泥土]称号)'
+  main_up:
+    type: MAGMA_CREAM
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§3§l当前等级: §6{0}'
+      lore:
+      - '§7(升到下一级花费§5{0}§7金币)'
+      - '§7(会获得称号,详见§3称号->等级类型§7)'
+      - '§7(点击升级,需要确认)'
+  main_tip:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l++命令提示++
+      lore:
+        - "§b§l/cmd 主界面"
+        - "§3§l/cmd 玩家§5§l查看玩家主界面"
+        - "§3§l/land §5§l领地命令"
+        - "§3§l/land 领地名§5§l快速查看领地"
+        - "§3§l/go §5§l快速传送领地"
+        - "§3§l/house §5§l传送家园"
+        - "§3§l/town §5§l传送村庄"
+        - "§3§l/spawn §5§l传送重生点"
+        - "§3§l/back §5§l返回上个传送点"
+        - "§3§l/tpa §5§l传送到玩家"
+        - "§3§l/tpahere §5§l传送玩家到你身边"
+        - "§3§l/sethome §5§l设置家"
+        - "§3§l/home §5§l传送家"
+        - "§3§l/msg §5§l私聊"
+        - "§3§l/qs §5§l箱子商店命令"
+        - "§3§l/shop §5§l全球商店命令"
+        - "§3§l/pay §5§l付款给玩家"
+        - "§3§l/tpr §5§l随机传送"
+        - "§3§l/sell §5§l查看手中物品售价"
+        - "§3§l/sell 数量 §5§l出售手中物品"
+        - "§3§l/baltop §5§l查看财富排行"
+        - "§3§l/c §5§l随身工作台"
+        - "§3§l/gift §5§l查看礼包状态"
+        - "§3§l/key §5§l制作钥匙帮助"
+        - "§3§l/mail §5§l收发邮件"
+        - "§3§l/pack §5§l跨服背包"
+        - "§3§l/join §5§l服务器传送"
+        - "§3§l/1或/2或/3或/4或/5 §5§l快速切换聊天频道"
+        - "§3§l/jb §5§l举报"
+        - "§4§l/suicide 自杀(慎用!!!)"
+  set_buyJoin:
+    type: CLAY_BALL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a§l邀请石
+      lore:
+        - §7(邀请其它玩家来服务器)
+        - §7(然后把邀请石扔给对方使用)
+        - §7(对方玩得越久,你所能获得的好处也会越大)
+        - §7<§3左键§7购买,花费§5{0}§7金币|§3右键§7查看邀请制度说明>
+  main_town:
+    type: SAPLING
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§3§l村庄操作'
+#################################
+#####         邀请          #####
+#################################
+join:
+  itemId: 337
+  check: "&5+邀请石+"
+  joiner: "&3邀请者:&6 "
+  lore:
+    - "&7(给被邀请者使用)"
+    - "&7(请尽量给玩得久的玩家,这样你能获得的好处也越大)"
+  cost: 800                      #一个邀请石的价格
+  free:                          #获得一个免费邀请石的条件
+    place: 10000
+    mine: 10000
+    monster: 300
+    online: 1440
+  max: 10                        #每个玩家的邀请数量上限
+  cmd:
+    - "level add {0} 200 {1}"
+    - "level add {0} 201 {1}"
+    - "level add {0} 202 {1}"
+    - "level add {0} 203 {1}"
+    - "level add {0} 204 {1}"
+    - "level add {0} 205 {1}"
+  rewards:
+    beJoin: 3                    #被邀请者奖励
+    join:                        #邀请者奖励
+      join1:
+        per: "per.infos.checkJoin1" #用来检测的权限
+        con:                     #条件
+          break: 100
+          place: 100
+          mine: 100
+          monster: 10
+          online: 60
+        rewards: 5
+      join2:
+        per: "per.infos.checkJoin2"
+        con:
+          break: 1000
+          place: 8000
+          mine: 10000
+          monster: 300
+          online: 1440
+        rewards: 48
+      join3:
+        per: "per.infos.checkJoin3"
+        con:
+          break: 5000
+          place: 30000
+          mine: 50000
+          monster: 500
+          online: 4320
+        rewards: 96
+#################################
+#####         类型          #####
+#################################
+types:
+  item:
+    safeBlocks:                  #不当作破坏性方块的方块列表
+      mode: 1
+      inherit:
+      types:                     
+        - 1
+        - 2
+        - 3
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 21
+        - 31
+        - 32
+        - 37
+        - 38
+        - 39
+        - 40
+        - 48
+        - 73
+        - 74
+        - 78
+        - 80
+        - 82
+        - 86
+        - 87
+        - 88
+        - 110
+        - 121
+        - 129

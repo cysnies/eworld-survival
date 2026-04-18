@@ -1,0 +1,8 @@
+name: fasthelp
+main: fasthelp.Main
+version: 1.0
+softdepend: [lib]
+commands:
+  fh:
+    description: none.
+    usage: /<command> ?

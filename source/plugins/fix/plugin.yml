@@ -1,0 +1,15 @@
+name: fix
+main: fix.Fix
+version: 1.0
+depend: [land]
+softdepend: [lib,friend,lockette]
+commands:
+  fix:
+    description: none.
+    usage: /<command> ?
+  c:
+    description: none.
+    usage: /<command> ?
+  buy:
+    description: none.
+    usage: /<command> ?

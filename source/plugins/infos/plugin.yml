@@ -1,0 +1,17 @@
+name: infos
+main: infos.Infos
+version: 1.0
+softdepend: [lib,land,house,basic,death,friend,Essentials,level]
+commands:
+  infos:
+    description: none.
+    usage: /<command> ?
+  cmd:
+    description: none.
+    usage: /<command> ?
+  gift:
+    description: none.
+    usage: /<command> ?
+  bind:
+    description: none.
+    usage: /<command> ?

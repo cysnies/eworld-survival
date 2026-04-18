@@ -1,0 +1,1036 @@
+#功能:
+#>修正
+#  - 活塞无法跨领地推
+#  - 商店下禁止非所有者放漏斗
+#  - 药效最长时间限制防无限药效bug(有管理权限除外)
+#  - 动物收费
+#  - 取消作物的自然生长
+#  - 取消动物生子
+#  - 村民生命
+#  - 禁止头被改名
+#  - 取消农田被踩坏
+#  - 禁止头被流水冲走
+#  - 满人被踢修改提示
+#  - 自动刷怪笼怪物清理
+#  - 新世界领地外无法打破放置提示
+#  - 防卡地狱门
+#  - 羊长毛速度降低
+#  - 刷怪笼生怪几率降低
+#  - 定时检测没有'essentials.fly'权限的玩家取消飞行(会同时检测land的fly标记)
+#  - 随身工作台
+#  - 攻击效果加强(玩家伤害生物时,玩家,骷髅,火焰人,铁傀儡除外)
+#  - 技能+点石成金+
+#  - 技能+万金油+
+#  - 技能+挖矿祝福+
+#  - 技能+战争祝福+
+#  - 动态火把
+#  - 打怪掠夺更多经验
+#  - 挖矿(熔炉)掠夺更多经验
+#  - 禁止药水界面按住shift点击
+#  - 玩家第一次进服时自动获得一本帮助
+#  - 玩家进入或退出游戏时强制从交通工具上下来
+#  - 玩家进入游戏时检测修正位置,防bug(将被传送到世界'world'的重生点)
+#  - 玩家上线轻微检测传送改变位置防bug
+#  - 指定世界(家园)禁止自然生怪
+#  - 爆炸无法炸毁方块
+#  - 禁止挂画被非玩家的实体与未知或爆炸打破
+#  - 禁止玩家使用指定物品
+#  - 禁止玩家接触末地传送门方块
+#  - 倒水与倒岩浆权限添加
+#  - 倒液体修正,在玩家无法倒液体时没收液体
+#  - 倒液体花费
+#  - 发射器禁发射指定物品
+#  - 右键生物显示生命值
+#  - 禁止村民的生子与自然生成与区块生成
+#  - 取消铁人把目标设定为僵尸
+#  - 防止生物消失
+#  - 地狱中取消骷髅因刷怪蛋而生成
+#  - 地狱中骷髅生成机率降低
+#  - 生物吞噬
+#  - 生物聊天
+#  - 生物掉落增加
+#  - 生物死亡掉落物提示
+#  - 处于世界中提示
+#  - 红石治疗好友
+#  - 木牌文字颜色转换(/&会显示'&',其它&会被转换)
+#  - 禁止命名牌使用
+#>抽奖牌
+#>夜晚
+#  - 进入白天/黑夜提示
+#  - 白天黑暗中不生怪
+#  - 恐怖夜晚,夜晚在玩家身边及稍远处生怪
+#>附魔降低
+#>挖方块增加消耗,及使用更快(耐久消耗更快)
+#>季节与成长修正
+#  - 成长修正
+#    - 作物成长修正
+#    - 动物成长修正
+#  - 季节
+#    - 春夏秋冬转换及年份提示
+#    - 季节作物与动物修正
+#  - 新年礼包
+#>刷怪笼修正
+#  - 刷怪笼数量增加,种类增加
+#  - 打破掉落附魔瓶
+#  - 打破失败生怪
+#  - 刷怪数量限制
+#  - 地狱中取消凋零骷髅因刷怪笼而生成
+#>钓鱼
+#>彩票
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/fix/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#管理权限
+per_fix_admin: "per.fix.admin"
+#立即打破刷怪笼的权限
+per_fix_spawner_break: "per.fix.spawner.break"
+#有此权限的玩家晚上不会在身边生怪(恐怖夜晚)
+per_fix_banNight: "per.fix.banNight"
+#倒水/岩浆免费的权限
+per_fix_bucket_free: "per.fix.bucket.free"
+#随身工作台的权限
+per_fix_craft: "per.fix.craft"
+#################################
+#####          修正         #####
+#################################
+#药效最长时间,单位秒
+longestEffect: 600
+#动物收费
+animalCost:
+  enable: true
+  type: "animalCost"             #实体类型
+  free: "per.fix.animalCost.free"#养殖免费的权限
+  interval: 600                  #检测间隔,单位秒
+  chance: 20                     #收费几率,0-100
+  costChance: 20                 #每次收费几率,0-100
+  cost: 5                        #每次每个动物收费数量,整数
+#取消作物的自然生长
+cancelGrow: true
+#取消动物生子,留空表示不取消
+cancelBreed:
+  type: "breed"                  #取消生子的实体类型
+#村民生命
+villageLife: 300
+#自动刷怪笼怪物清理
+autoMonClear:
+  interval: 2                    #检测间隔,单位秒
+  amount: 1                      #每次随机检测的怪物次数(每个世界)
+  range: 15                      #检测范围
+  max: 30                        #数量上限(同类型)
+#新世界无法打破提示间隔
+newWorldTipLimit: 10000
+#防卡地狱门
+netherDoorTip: 5                 #卡地狱门里多少秒后提示玩家
+netherDoor: 30                   #卡地狱门里多少秒后发出重生事件
+#羊长毛速度降低(有多少几率会成功长毛)
+fixSheep: 60
+#刷怪笼生怪几率降低(?/100的几率取消刷怪笼生怪)
+fixSpawner: 0
+#技能+点石成金+(把石头变成黄金)
+stoneGold:
+  per: "per.fix.stoneGold"       #需要的权限
+  worlds:                        #在哪些世界中有效
+    - "oreWorld"
+  chance: 4000                   #几率,多少分之一
+  radius: 6                      #检测的范围半径
+  amount: 30                     #变成金矿的数量
+  id: 14                         #金矿的ID
+#技能+万金油+
+statsGood:
+  per: "per.fix.statsGood"       #需要的权限
+  chance: 1000                   #触发概率为多少分之一
+  mineType: "mine"               #有效的矿物类型
+  toolType: "tool"               #有效的工具类型
+#技能+挖矿祝福+(考虑耐久附魔)
+mineGood:
+  per: "per.fix.mineGood"        #需要的权限
+  chance: 100                    #触发概率为多少分之一
+  add: 30                        #触发后恢复的耐久(无耐久附魔情况下)
+  mineType: "mine"               #有效的矿物类型
+  toolType: "tool"               #有效的工具类型
+#技能+战争祝福+(考虑耐久附魔)
+attackGood:
+  per: "per.fix.attackGood"      #需要的权限
+  chance: 100                    #触发概率为多少分之一
+  add: 25                        #触发后恢复的耐久(无耐久附魔情况下)
+#动态火把(只在夜晚有效)
+light:
+  tipInterval: 250               #动态火把提示间隔
+  effect:                        #对玩家在哪些方块上时有效
+    - 1
+    - 2
+    - 3
+    - 12
+  worlds:
+    - "oreWorld"                 #对哪些世界有效
+#打怪掉落更多经验(掉落的经验直接加到玩家身上,并且显示给玩家)
+dropExp:
+  vipPer: "per.fix.dropExp.vip"  #需要的权限
+  chance: 3                      #掉落更多经验的几率
+  multi: 7                       #额外掉落的经验倍数
+#挖矿掉落更多经验(掉落的经验直接加到玩家身上,并且显示给玩家)
+mineExp:
+  vipPer: "per.fix.mineExp.vip"  #需要的权限
+  chance: 10                     #掉落更多经验的几率
+  multi: 6                       #额外掉落的经验倍数
+#禁止自然生怪的世界列表
+banNaturalMonsterWorlds:
+  - "houseWorld"
+#属于怪物的实体类型
+monsterType: "monster"
+#使用水桶的权限
+per_fix_bucket_water: "per.fix.bucket.water"
+#使用岩浆桶的权限
+per_fix_bucket_lava: "per.fix.bucket.lava"
+#是否在玩家使用岩浆桶或水桶并被取消的时候把桶变成空桶
+emptyBucket: true
+#领地内倒水/岩浆是否免费!
+resFree: true
+#倒水/岩浆花费
+liquidCost:
+  water: 8
+  lava: 80
+#发射器禁止发射的物品id列表(是被检测的物品的id)
+dispenseBan:
+  - 8
+  - 9
+  - 10
+  - 11
+  - 326
+  - 327
+  - 342
+  - 343
+  - 383
+  - 407
+  - 408
+#禁止使用的物品id列表
+banUse:
+  - 342
+  - 343
+  - 407
+  - 408
+#右键生物显示生命值
+showHealth:
+  item: 0                        #手拿什么物品,0表示空手
+  entityType: showHealthEntity   #有效的目标实体类型
+#是否取消铁人把目标设定为僵尸
+cancelIronGolemTargetZombie: true
+#远距离不消失的实体类型
+cancelRemoveFaraway: "cancelRemoveFaraway"
+#有管理权限的玩家查看远距离不消失的实体类型使用的物品(右键查看生物是否消失)
+cancelRemoveItem: 268
+#地狱中骷髅自然生成几率降低,百分之多少几率取消生成
+lowerSkeleton: 75
+#生物吞噬(只吞噬同类,只对LivingEntity有效)
+eat:
+  maxLevel: 50                   #最大等级
+  health:
+    mode: 1                      #吞噬后,生命值恢复模式,0表示不变,1表示变为两者相加,2表示恢复成最大生命值
+  check:
+    timer:                       #定时检测
+      interval: 10               #检测间隔,单位秒
+      times: 3                   #每次检测的次数(每个世界的检测次数)
+  tip:                           #吞噬提示
+    enable: true
+    range: 8
+  range: 15                      #检测范围
+  max: 9                         #范围内的同类数量上限,超过则进行吞噬
+  entity: "eat"                  #允许吞噬的实体
+  worlds:                        #生效的世界
+    - "world"
+    - "newWorld"
+    - "oreWorld"
+    - "townWorld"
+    - "houseWorld"
+    - "world_nether"
+    - "world_the_end"
+#生物聊天提示
+chat:
+  checkInterval: 10              #检测间隔,单位秒
+  customNameVisiable: false
+  maxLength: 30                  #聊天信息最长多少字符
+  contents:
+    - "你知道吗?如果你看到假矿,说明网络卡了."
+    - "服务器论坛:www.minecraft001.com"
+    - "服务器QQ一群: 306825355"
+    - "服务器QQ二群: 324704149"
+    - "服务器QQ三群: 145980465"
+    - "输入/cmd可以打开主界面哦"
+    - "输入/land或/l可以打开领地界面哦"
+    - "服务器YY: 48376279"
+    - "为减轻服务器负担,目前部分动物加上了等级"
+    - "等级越高的动物掉落也会相应翻倍"
+    - "剪羊毛时高等级的羊掉落更多"
+    - "鸡生蛋时高等级的鸡也会生更多的蛋"
+    - "10级以上的动物死亡可能会掉落动物蛋哦"
+    - "20级以上的动物死亡可能会掉落动物头哦"
+    - "如果作物种植太密集了,可能会自动掉落哦"
+    - "请勿使用高频红石,否则红石线会被自动清除"
+    - "偷偷地告诉你,死亡会掉落金钱和耐久"
+    - "记得去服务器论坛查看各种帮助"
+    - "如果你喜欢用红石,那请不要超频"
+    - "地狱和末地都是允许PVP的,进入请小心"
+    - "请对自己负责,容器上锁,领地圈好"
+    - "不存在没有熊孩子的服务器,请注意保护"
+    - "开商店后记得开启领地传送和商店购买权限"
+    - "花1分钟时间熟悉一下指令比问要快得多"
+    - "生存世界某些权限只能在领地内进行,比如打火石"
+    - "文明的游戏可以给大家带来最好的体验"
+    - "适当游戏益脑,过度游戏伤身"
+    - "以下指令请慎用:/suicide自杀,ALT+F4关闭游戏"
+#掉落增加,与生物吞噬的等级有关
+drop:
+  fix: 30                        #波动,0-100,比如30表示掉落物数量最终会在70%-130%之间
+  max: 100                       #掉落数量上限
+  egg: 10                        #从几级开始可能掉落蛋
+  head: 20                       #从几级开始可能掉落头
+  drop1:                         #猪
+    id: 90
+    health: 10
+    drops:
+      - "319 1.5"
+    egg: 40                      #杀死后掉落对应蛋的几率(如等级10相当于几率为10/40)
+    head: 280                    #同上
+    headName: "MHF_Pig"          #头所用的玩家
+  drop2:                         #羊(羊毛颜色特殊情况)
+    id: 91
+    health: 8
+    shears:                      #不要加羊毛外的其它东西
+      - "35 0.8"
+    drops:
+      - "35 0.9"
+    egg: 70
+    head: 280
+    headName: "SGT_KICYORASS"
+  drop3:                         #牛
+    id: 92
+    health: 10
+    drops:
+      - "363 1.8"
+      - "334 0.8"
+    egg: 50
+    head: 280
+    headName: "MHF_Cow"
+  drop4:                         #鸡
+    id: 93
+    health: 4
+    drops:
+      - "288 0.6"
+      - "365 0.8"
+    egg: 70
+    fix: 0.5
+    head: 350
+    headName: "MHF_Chicken"
+  drop5:                         #蘑菇牛
+    id: 96
+    health: 10
+    drops:
+      - "363 1.8"
+      - "334 0.8"
+    egg: 250
+    head: 300
+    headName: "MHF_MushroomCow"
+#掉落物提示
+dropTip:
+  enable: true
+  allow: "dropTip"               #允许掉落物提示的生物类型
+  range: 8                       #提示范围
+  customName: false              #是否使用生物的CustomName
+#处于世界中提示
+worldTip:
+  enable: true
+  interval: 180                  #检测间隔,单位秒
+  success: 40                    #成功几率,0-100
+  tips:
+    tip1:
+      world: "oreWorld"
+      tip: "&6世界提示:&c你正处于矿物世界中,此世界不定时删除重置,请勿存放箱子或建造."
+#红石治疗
+heal:
+  enable: true
+  id: 331                        #治疗物(红石)的ID
+  cost: "heal"
+  recovery: 2
+  interval: 800                  #两次治疗的间隔
+#################################
+#####        抽奖牌         #####
+#################################
+draw:
+  per: "per.fix.draw"            #建立抽奖牌的权限
+  flag: "draw"                   #建立的检测标记
+  check: "&5[抽奖]"              #检测标记
+  name: "&5&l抽奖:"              #不能有空格
+  flagUnlimit: "unlimit"         #建立时无限的标记(第三行)
+  checkUnlimit: "&a无限"         #检测无限的标记(第三行)
+  price: "&1单价: &5{0}金币"     #勿改变,否则需要改变程序代码!
+  maxPrice: 1000                 #收费上限
+  cost: 100                      #建立抽奖牌花费
+  tax: 5                         #收税,0-100
+  sneak: true                    #是否需要潜行
+  interval: 600                  #使用抽奖的间隔
+#################################
+#####          夜晚         #####
+#################################
+#进入白天/黑夜是否提示
+tipDayChange: true
+#是否取消白天黑暗生怪
+dayBlack: false
+#恐怖夜晚
+night:
+  worlds:            #有效的世界名字列表
+    - "world"
+    - "newWorld"
+    - "oreWorld"
+  interval: 10       #检测间隔,单位秒
+  playerBorn:        #直接在玩家身边出生
+    chance: 5        #每次检测成功率
+    dark: 4          #检测成功的条件:至少黑暗程度,亮度小于等于这个值都满足
+    monster:         #出生的怪物类型id与机率配置
+      - "50 5"
+      - "51 50"
+      - "52 40"
+      - "54 70"
+      - "57 20"
+      - "59 35"
+      - "60 15"
+  nearBorn:           #在玩家附近出生
+    chance: 13
+    dark: 5
+    minDistance: 6    #成功后怪物出生点与玩家的最小距离
+    maxDistance: 14   #成功后怪物出生点与玩家的最大距离
+    monster:
+      - "50 40"
+      - "51 50"
+      - "52 40"
+      - "54 55"
+      - "57 20"
+      - "58 15"
+      - "59 33"
+      - "60 30"
+      - "66 12"
+#################################
+#####        附魔降低       #####
+#################################
+#附魔最低等级,如果降低后小于此等级则取消降低
+enchantMin: 10
+#附魔与对应的降低1级的机率(0-100)
+#可删除对应的附魔项,与机率为0一样表示不降低附魔等级
+enchant:
+  - "0 50"
+  - "1 20"
+  - "2 20"
+  - "3 20"
+  - "4 20"
+  - "5 10"
+  - "6 10"
+  - "7 10"
+  - "16 60"
+  - "17 40"
+  - "18 40"
+  - "19 50"
+  - "20 45"
+  - "21 50"
+  - "32 80"
+  - "33 90"
+  - "34 85"
+  - "35 90"
+  - "48 60"
+  - "49 65"
+  - "50 70"
+  - "51 75"
+######################################
+### 工具加速消耗(考虑了耐久附魔) #####
+######################################
+#挖方块增加消耗
+addConsume:
+  - "14 3"
+  - "15 2"
+  - "16 1"
+  - "21 1"
+  - "49 5"
+  - "52 9"
+  - "56 4"
+  - "73 1"
+  - "74 1"
+  - "88 1"
+  - "129 4"
+  - "153 1"
+  
+#打火石每次使用加速消耗的机率(默认25)
+chanceFire: 0
+#打火石加速消耗的点数
+addFire: 2
+
+#钓鱼杆每次使用加速消耗的机率(默认30)
+chanceFish: 0
+#钓鱼杆加速消耗的点数
+addFish: 2
+
+#剪刀每次使用加速消耗的机率(默认150)
+chanceShears: 0
+#剪刀加速消耗的点数
+addShears: 1
+
+#弓箭每次发射加速消耗的机率(默认330)
+chanceBow: 0
+#每次加速消耗的点数
+addBow: 1
+
+#以下为木(wood),石(stone),铁(iron),金(gold),钻石(diamond)工具的配置
+#chance指每次使用加速消耗的机率,add指每次加速消耗的点数
+
+#木制工具(默认30)
+chanceWood: 0
+addWood: 1
+
+#石制工具(默认60)
+chanceStone: 0
+addStone: 2
+
+#铁制工具(默认200)
+chanceIron: 0
+addIron: 1
+
+#金制工具(默认30)
+chanceGold: 0
+addGold: 1
+
+#钻石工具(默认1250)
+chanceDiamond: 0
+addDiamond: 1
+#################################
+#####    季节与成长修正     #####
+#################################
+#是否开启季节时间功能(包括动物,作物修正)
+enableSeason: false
+#作物,动物修正
+fix:
+  sugarCane: 50                  #多少分之一成功率
+  coco: 100                      #多少分之一成功率
+  egg: 5                         #鸡蛋生鸡百分之多少几率成功
+  cancelMushroomCow: true        #是否取消蘑菇牛的区块与自然生成
+  failTipDistance: 6             #生物由于难产而死提示附近玩家的距离
+  chances:                       #生物成功出生的几率(难产,由生子而产生)
+    - "90 20"
+    - "91 25"
+    - "92 13"
+    - "93 20"
+    - "95 15"
+    - "96 2"
+    - "98 15"
+    - "120 1"
+
+#crop1是小麦,胡萝卜,马铃薯;crop2是西瓜,南瓜
+time:                
+  interval: 120                  #一季多少分钟
+  season0: 
+    name: "春季"
+    crop1:
+      - 1
+      - 2
+      - 3
+    crop2:
+      - 1
+      - 2
+      - 3
+  season1: 
+    name: "夏季"
+    crop1:
+      - 3
+      - 4
+      - 5
+    crop2:
+      - 4
+      - 5
+      - 6
+      - 7
+  season2: 
+    name: "秋季"
+    crop1:
+      - 5
+      - 6
+      - 7
+  season3:                       #冬季,作物不长,右键动物无反应,无法钓鱼,鸡蛋无法生鸡
+    name: "冬季"
+  gift:                          #新年礼包
+    base: 100
+    add: 100
+#################################
+#####        刷怪笼         #####
+#################################
+spawner:
+  monster:
+    mon1:
+      id: 50             #刷怪笼对应的实体id
+      chance: 10         #出现此刷怪笼的概率
+      cancel: 30         #打破此刷怪笼的几率为多少分之一
+      spawnMin: 1        #取消打破时生成的对应怪的最小数量
+      spawnMax: 2        #取消打破时生成的对应怪的最大数量
+      disappear: 100     #生物生成后刷怪笼消失几率为多少分之一
+      expBoxMin: 5       #打破刷怪笼掉落的附魔瓶最小数量
+      expBoxMax: 12      #打破刷怪笼掉落的附魔瓶最大数量
+    mon2:
+      id: 51
+      chance: 50
+      cancel: 50
+      spawnMin: 1
+      spawnMax: 2
+      disappear: 300
+      expBoxMin: 3
+      expBoxMax: 14
+    mon3:
+      id: 52
+      chance: 90
+      cancel: 70
+      spawnMin: 1
+      spawnMax: 2
+      disappear: 500
+      expBoxMin: 3
+      expBoxMax: 15
+    mon4:
+      id: 53
+      chance: 1
+      cancel: 5
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 12
+      expBoxMin: 5
+      expBoxMax: 19
+    mon5:
+      id: 54
+      chance: 150
+      cancel: 90
+      spawnMin: 1
+      spawnMax: 3
+      disappear: 800
+      expBoxMin: 4
+      expBoxMax: 13
+    mon6:
+      id: 55
+      chance: 3
+      cancel: 2
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 3
+      expBoxMin: 6
+      expBoxMax: 19
+    mon7:
+      id: 57
+      chance: 5
+      cancel: 30
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 200
+      expBoxMin: 10
+      expBoxMax: 19
+    mon8:
+      id: 58
+      chance: 3
+      cancel: 5
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 30
+      expBoxMin: 8
+      expBoxMax: 14
+    mon9:
+      id: 59
+      chance: 40
+      cancel: 55
+      spawnMin: 1
+      spawnMax: 2
+      disappear: 380
+      expBoxMin: 5
+      expBoxMax: 16
+    mon10:
+      id: 60
+      chance: 4
+      cancel: 80
+      spawnMin: 1
+      spawnMax: 3
+      disappear: 380
+      expBoxMin: 3
+      expBoxMax: 12
+    mon11:
+      id: 66
+      chance: 3
+      cancel: 20
+      spawnMin: 1
+      spawnMax: 2
+      disappear: 50
+      expBoxMin: 2
+      expBoxMax: 12
+    mon12:
+      id: 90
+      chance: 5
+      cancel: 5
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 35
+      expBoxMin: 2
+      expBoxMax: 9
+    mon13:
+      id: 91
+      chance: 4
+      cancel: 5
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 30
+      expBoxMin: 3
+      expBoxMax: 10
+    mon14:
+      id: 92
+      chance: 3
+      cancel: 4
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 18
+      expBoxMin: 4
+      expBoxMax: 12
+    mon15:
+      id: 93
+      chance: 6
+      cancel: 8
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 40
+      expBoxMin: 2
+      expBoxMax: 9
+    mon16:
+      id: 95
+      chance: 2
+      cancel: 3
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 8
+      expBoxMin: 2
+      expBoxMax: 12
+    mon17:
+      id: 96
+      chance: 1
+      cancel: 1
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 1
+      expBoxMin: 8
+      expBoxMax: 19
+    mon18:
+      id: 98
+      chance: 2
+      cancel: 3
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 8
+      expBoxMin: 2
+      expBoxMax: 12
+    mon19:
+      id: 99
+      chance: 1
+      cancel: 2
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 2
+      expBoxMin: 4
+      expBoxMax: 23
+    mon20:
+      id: 100
+      chance: 1
+      cancel: 2
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 3
+      expBoxMin: 10
+      expBoxMax: 25
+    mon21:
+      id: 120
+      chance: 1
+      cancel: 2
+      spawnMin: 1
+      spawnMax: 1
+      disappear: 3
+      expBoxMin: 10
+      expBoxMax: 25
+  chunk:
+    worlds:                     #对哪些世界有效
+    chance: 20                  #每次populate时生成一个刷怪笼的几率,0-100
+    air: airSpawner             #检测方块时被当作空气的方块ID类型
+  disappearRaidus: 4            #刷怪笼消失检测半径(只对上面指定的世界有效)
+  tipRadius: 10                 #刷怪笼消失提示检测半径
+  drop: 4                       #掉落对应刷怪笼的几率,0-100
+  dropTip: true                 #掉落时全服通告
+  flyCancel: true               #如果玩家处于飞行状态是否无法打破刷怪笼(显示为姿势不对)
+  occure: 20                    #打破失败时生对应怪的概率,0-100
+  cancelSkeleton: true          #地狱中是否取消凋零骷髅因刷怪笼而生成
+  nether:                       #地狱的世界名列表
+    - "world_nether"
+  place:
+    name: "&b刷怪笼:&6 "        #显示用
+    lore: "&b实体ID:&6 "        #检测用
+#################################
+#####          钓鱼         #####
+#################################
+fish:
+  #是否开启
+  enable: true
+  #至少多少在线玩家有效
+  player: 50
+  #检测间隔,单位秒
+  interval: 150
+  #每次检测成功几率,0-100
+  chance: 25
+#################################
+#####         彩票          #####
+#################################
+buy:
+  buy1:                          #花费金币奖励点券
+    cost: 100                    #花费的金币
+    chance: 100000               #0-(chance-1)
+    target: 3434                 #随机数等于多少时中奖
+    rewards: 10000               #奖励的点券数
+  buy2:                          #花费点券奖励金币
+    cost: 5                      #花费的点券
+    chance: 4000                 #0-(chance-1)
+    target: 2433                 #随机数等于多少时中奖
+    rewards: 1000000             #奖励的金币数
+#################################
+#####          花费         #####
+#################################   
+costs:
+  heal:
+    money: 0
+    exp: 0
+    level: 0
+    item: "heal"
+#################################
+#####        物品类型       #####
+#################################
+items:
+  heal:
+    type: REDSTONE
+    amount: 2
+  guide:
+    type: WRITTEN_BOOK
+    meta:
+      ==: ItemMeta
+      meta-type: BOOK
+      title: §a§l新手指导§4§l(必看)
+      author: 版本一
+      pages:
+      - "§4§l§n  === E世界(二周目)===   \n§3§l     §5§l+++§3§l新手指导§5§l+++\n§5§l=======[问\
+        题一]=========\n§c§l问:你是个刚入MC的新人,基本玩法都不会?\n§1§l答:那样的话请自己努力学会MC的基本玩法吧.\n§5§l=======[问\
+        题二]=========\n§c§l问:这是你玩的第一个服务器?或者说你对一般服务器的基本指令也不清楚?\n§1§l答:是的话请牢记一个指令:§3§\
+        l/cmd§1§l(打开主界面),其它的所有帮助都可由此获知"
+      - |-
+        §5§l=======[问题三]========= §c§l问:你想知道这是什么类型的服务器? §1§l答:E世界二周目的主题是§a§l生存§1§l与§a§l娱乐§1§l,无MOD. §5§l=======[问题四]========= §c§l问:你想知道这个服务器的总体设定?
+         §1§l答: §a§l>家园(世界):§1§l在这世界里,每个玩家都有一个自己的家,这个家是完全私人的!无法给其它玩家添加权限!除非
+      - §1§l你被盗号否则家园是最安全的!因此以防万一,请尽量将贵重物品放在家园里. §a§l>矿物世界:§1§l这个世界是专门给玩家收集资源的,会不定时重置,因此严禁建造与存放箱子,否则重置后会消失! §a§l>新世界:§1§l设定这个世界是为了解决新人建造房屋不会或者没钱圈领地而被破坏的现象. §1§l每个玩家都可以在这个世界里免费领取一块领地,
+      - §1§l与家园的不同之处在于:此领地是可扩展的,并且领地外是无法破坏的,这是强制安全的模式. §3§l领取方法:§1§l1.输入/land进入选择范围界面获取免费领地棒;2.在新世界里找个好地方;3.点击方块;4.如果不与其它领地发生冲突,那么领取免费领地成功,领取的领地以你点击的方块为中心,大小21*21*21
+      - §a§l>生存世界:§1§l这个世界是最自由的,也是最不安全的,如果你不圈领地,你的建筑被破坏是迟早的事,不要存着侥幸心理,各大服务器皆如此. §a§l>地狱:§1§l此世界可自由圈地,允许PVP!注意保护自己! §a§l>末地:§1§l此世界无法圈地,允许PVP!请勿建造并注意保护自己!
+      - §5§l=======[问题五]========= §c§l问:你想知道如何开始? §1§l答:首先你会出生在家园你的家里,如果想去重生点输入/spawn §1§l1.初期你可以改造你§3§l家园§1§l的家,去§3§l矿物世界§1§l收集资源,并把物品都存放在家园里 §1§l2.然后去§3§l新世界§1§l领取免费的领地,此领地是安全的,也是可不断扩展的 §1§l3.后面你有钱了,可以考虑去§3§l生存世界§1§l圈地(其实新世界也可以自由圈地)
+      - §1§l4.后面你装备好了,可以考虑去§3§l地狱§1§l与§3§l末地§1§l探险,抵抗怪物并小心玩家攻击 §4§l§n请勿必不要一开始就去生存世界建造,否则你的建筑没有任何保护!!!
+#################################
+#####          类型         #####
+#################################
+#格式查看lib插件的类型配置文件里的说明
+types:
+  item:
+    mine:
+      mode: 1
+      inherit:
+      types:
+        - 1
+        - 2
+        - 3
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
+        - 21
+        - 24
+        - 48
+        - 49
+        - 56
+        - 73
+        - 87
+        - 88
+        - 110
+        - 112
+        - 121
+        - 129
+        - 153
+    tool:
+      mode: 1
+      inherit:
+      types:
+        - 269
+        - 270
+        - 273
+        - 274
+        - 256
+        - 257
+        - 284
+        - 285
+        - 277
+        - 278
+    airSpawner:
+      mode: 1
+      inherit:
+      types:
+        - 0
+        - 8
+        - 9
+        - 10
+        - 11
+        - 17
+        - "17:1"
+        - "17:2"
+        - "17:3"
+        - 18
+        - "18:1"
+        - "18:2"
+        - "18:3"
+        - 31
+        - 32
+        - 37
+        - 38
+        - 39
+        - 40
+        - 59
+        - 78
+        - 83
+        - 86
+        - 106
+        - 111
+  entity:
+    dropTip:
+      mode: 1
+      inherit:
+      types:
+        - "CREEPER"
+        - "SKELETON"
+        - "SPIDER"
+        - "GIANT"
+        - "ZOMBIE"
+        - "SLIME"
+        - "GHAST"
+        - "PIG_ZOMBIE"
+        - "ENDERMAN"
+        - "CAVE_SPIDER"
+        - "SILVERFISH"
+        - "BLAZE"
+        - "MAGMA_CUBE"
+        - "WITCH"
+        - "WITHER"
+        - "BAT"
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "SQUID"
+        - "WOLF"
+        - "MUSHROOM_COW"
+        - "SNOWMAN"
+        - "OCELOT"
+        - "IRON_GOLEM"
+        - "HORSE"
+        - "VILLAGER"
+    cancelRemoveFaraway:
+      mode: 1
+      inherit:
+      types:
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "WOLF"
+        - "MUSHROOM_COW"
+        - "SNOWMAN"
+        - "OCELOT"
+        - "IRON_GOLEM"
+    showHealthEntity:
+      mode: 1
+      inherit:
+      types:
+        - "CREEPER"
+        - "SKELETON"
+        - "SPIDER"
+        - "GIANT"
+        - "ZOMBIE"
+        - "SLIME"
+        - "GHAST"
+        - "PIG_ZOMBIE"
+        - "ENDERMAN"
+        - "CAVE_SPIDER"
+        - "SILVERFISH"
+        - "BLAZE"
+        - "MAGMA_CUBE"
+        - "WITCH"
+        - "BAT"
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "SQUID"
+        - "WOLF"
+        - "MUSHROOM_COW"
+        - "SNOWMAN"
+        - "OCELOT"
+        - "IRON_GOLEM"
+    eat:
+      mode: 1
+      inherit:
+      types:
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "MUSHROOM_COW"
+    monster:
+      mode: 1
+      inherit:
+      types:
+        - "CREEPER"
+        - "SKELETON"
+        - "SPIDER"
+        - "GIANT"
+        - "ZOMBIE"
+        - "SLIME"
+        - "GHAST"
+        - "PIG_ZOMBIE"
+        - "ENDERMAN"
+        - "CAVE_SPIDER"
+        - "SILVERFISH"
+        - "BLAZE"
+        - "MAGMA_CUBE"
+        - "WITCH"
+        - "WITHER"
+    breed:
+      mode: 1
+      inherit:
+      types:
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "MUSHROOM_COW"
+        - "SQUID"
+        - "WOLF"
+        - "OCELOT"
+        - "HORSE"
+    animalCost:
+      mode: 1
+      inherit:
+      types:
+        - "PIG"
+        - "SHEEP"
+        - "COW"
+        - "CHICKEN"
+        - "MUSHROOM_COW"
+        - "WOLF"
+        - "OCELOT"
+        - "HORSE"

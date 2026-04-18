@@ -1,0 +1,21 @@
+package net.citizensnpcs.api.event;
+
+import net.citizensnpcs.api.npc.NPC;
+import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
+
+public class NPCLeftClickEvent extends NPCClickEvent {
+   private static final HandlerList handlers = new HandlerList();
+
+   public NPCLeftClickEvent(NPC npc, Player leftClicker) {
+      super(npc, leftClicker);
+   }
+
+   public HandlerList getHandlers() {
+      return handlers;
+   }
+
+   public static HandlerList getHandlerList() {
+      return handlers;
+   }
+}

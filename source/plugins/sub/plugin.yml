@@ -1,0 +1,8 @@
+name: sub
+main: sub.Main
+version: 1.0
+softdepend: [lib]
+commands:
+  sub:
+    description: none.
+    usage: /<command> ?

@@ -1,0 +1,8 @@
+name: jb
+main: jb.Main
+version: 1.0
+softdepend: [lib]
+commands:
+  jb:
+    description: none.
+    usage: /<command> ?

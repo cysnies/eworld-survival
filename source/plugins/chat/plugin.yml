@@ -1,0 +1,23 @@
+name: chat
+main: chat.Chat
+version: 1.0
+softdepend: [lib,friend]
+commands:
+  chat:
+    description: none.
+    usage: /<command> ?
+  1:
+    description: none.
+    usage: /<command> ?
+  2:
+    description: none.
+    usage: /<command> ?
+  3:
+    description: none.
+    usage: /<command> ?
+  4:
+    description: none.
+    usage: /<command> ?
+  5:
+    description: none.
+    usage: /<command> ?

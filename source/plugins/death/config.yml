@@ -1,0 +1,66 @@
+#功能:
+#>玩家死亡信息
+#>死亡保存物品,金币与经验
+#>死亡背包中的物品耐久下降
+#>死亡蝙蝠
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/death/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#重新读取配置文件的权限
+per_death_admin: "per.death.admin"
+#开启/关闭玩家死亡信息的权限
+per_death_msg: "per.death.msg"
+#不掉落金币的权限
+per_death_gold: "per.death.gold"
+#不掉落物品的权限
+per_death_item: "per.death.item"
+#不掉落经验等级的权限
+per_death_exp: "per.death.exp"
+#死亡背包中物品耐久不下降的权限
+per_death_durability: "per.death.durability"
+#死亡不掉落金币蝙蝠权限
+per_death_bat: "per.death.bat"
+#################################
+#####          配置         #####
+#################################
+#耐久降低多少(比如10表示耐久变为原来耐久度的90%)
+durabilityDel: 3
+death:
+  gold: 15           #死亡掉落金币的数量
+  goldAdd: 2         #死亡增加掉落的玩家身上金币比例默认为35表示35/10000
+  dropItem: false    #设置为true表示玩家如果死亡需要掉落金币而金币不足时则物品不保存
+  dropGold: false    #设置为true表示玩家如果死亡需要掉落金币而金币不足并且物品不保存时,是否掉落金币
+  suckGold: 60       #吸收多少玩家掉落的金币(0-100)
+#死亡蝙蝠
+bat:
+  enable: true
+  interval: 300      #多少秒检测一次全服蝙蝠的死活
+  liveTime: 1800     #蝙蝠可以存活多少秒
+  gold:
+    min: 5
+    max: 10
+  max: 10            #一只蝙蝠最大掉落的金币数(以防万一蝙蝠名被修改)
+  name: "&{0}{1}金币"#勿改!!!
+  defaultColor: "6"  #默认颜色
+  colors:            #如"3 c"表示小于等于3时的颜色为c(注意数字必须从小到大排列)
+    - "3 7"
+    - "7 c"
+    - "10 a"
+#################################
+#####        死亡信息       #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+deathMsg: "plugins/death/deathMsg.yml"
+#玩家是否使用displayName
+displayName: true
+#是否优先使用customName
+customName: true
+#模式2显示时间
+dur: 5
+#连杀有效期,单位秒
+killTime: 45

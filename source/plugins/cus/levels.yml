@@ -1,0 +1,148 @@
+#################################
+#####         称号          #####
+#################################
+#所有等级上限必须在1-10之间
+#n指等级
+
+#称号类型,一个怪物同类型称号最多只能拥有一个
+types:
+  - "1 生命上限"
+  - "2 当前生命"
+  - "3 掉落战功"
+  - "4 恢复能力"
+  - "5 掉落金币"
+  - "6 掉落经验"
+
+levels:
+  type1:                             #所属称号类型
+    #怪物生命上限会变为2*n
+    level1:                          #数字可以不递增,但必须唯一
+      id: 1                          #ID,不可重复
+      name: "&7[脆弱*]"            #名字,*会被实际等级代替
+      level:                         #等级
+        min: 1
+        max: 9
+    #怪物生命上限会变为n*10
+    level2:
+      id: 2
+      name: "&6[强壮*]"
+      level:
+        min: 3
+        max: 9
+    #怪物生命上限会变为n*100
+    level3:
+      id: 3
+      name: "&c[疯狂*]"
+      level:
+        min: 1
+        max: 9
+    #怪物生命上限会变为n*1000
+    level3:
+      id: 4
+      name: "&4[王者*]"
+      level:
+        min: 1
+        max: 10
+  type2:
+    #怪物初始生命会变为生命上限的n/10倍
+    level1:
+      id: 5
+      name: "&8[虚弱*]"
+      level:
+        min: 1
+        max: 9
+  type3:
+    #掉落战功会变为n*100
+    level1:
+      id: 10
+      name: "&4[将领*]"
+      level:
+        min: 1
+        max: 10
+    #掉落战功会变为n*10
+    level2:
+      id: 11
+      name: "&6[队长*]"
+      level:
+        min: 1
+        max: 9
+    #掉落战功会变为n
+    level3:
+      id: 12
+      name: "&e[小兵*]"
+      level:
+        min: 1
+        max: 9
+  type4:
+    #每次恢复数量会变为n*10
+    level1:
+      id: 15
+      name: "&4[坚韧*]"
+      level:
+        min: 1
+        max: 10
+    #每次恢复数量会变为n
+    level2:
+      id: 16
+      name: "&6[坚强*]"
+      level:
+        min: 1
+        max: 9
+    #每次恢复的数量会变为0.1*n
+    level3:
+      id: 17
+      name: "&e[犹豫*]"
+      level:
+        min: 1
+        max: 9
+  type5:
+    #掉落金币会变为n*1000
+    level1:
+      id: 20
+      name: "&4[财神*]"
+      level:
+        min: 1
+        max: 10
+    #掉落金币会变为n*100
+    level2:
+      id: 21
+      name: "&5[富有*]"
+      level:
+        min: 1
+        max: 9
+    #掉落金币会变为n*10
+    level3:
+      id: 22
+      name: "&6[小康*]"
+      level:
+        min: 1
+        max: 9
+    #掉落金币会变为n
+    level4:
+      id: 23
+      name: "&e[贫穷*]"
+      level:
+        min: 1
+        max: 9
+  type6:
+    #掉落经验会变为n*100
+    level1:
+      id: 25
+      name: "&4[统领*]"
+      level:
+        min: 1
+        max: 10
+    #掉落经验会变为n*10
+    level2:
+      id: 26
+      name: "&6[老兵*]"
+      level:
+        min: 1
+        max: 9
+    #掉落经验会变为n
+    level3:
+      id: 27
+      name: "&e[新兵*]"
+      level:
+        min: 1
+        max: 9

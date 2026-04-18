@@ -1,0 +1,91 @@
+package com.khorn.terraincontrol.customobjects.bo2;
+
+import com.khorn.terraincontrol.util.BlockHelper;
+
+public class ObjectCoordinate {
+   public int x;
+   public int y;
+   public int z;
+   private int hash;
+   public int blockId;
+   public int blockData;
+   public int BranchDirection;
+   public int BranchOdds;
+
+   public ObjectCoordinate(int _x, int _y, int _z) {
+      super();
+      this.x = _x;
+      this.y = _y;
+      this.z = _z;
+      this.BranchDirection = -1;
+      this.blockData = 0;
+      this.BranchOdds = -1;
+      this.hash = this.x + this.z << 8 + this.y << 16;
+   }
+
+   public boolean equals(Object obj) {
+      if (!(obj instanceof ObjectCoordinate)) {
+         return false;
+      } else {
+         ObjectCoordinate object = (ObjectCoordinate)obj;
+         return object.x == this.x && object.y == this.y && object.z == this.z;
+      }
+   }
+
+   public int hashCode() {
+      return this.hash;
+   }
+
+   public ObjectCoordinate Rotate() {
+      ObjectCoordinate newCoordinate = new ObjectCoordinate(this.z, this.y, this.x * -1);
+      newCoordinate.blockId = this.blockId;
+      newCoordinate.blockData = BlockHelper.rotateData(this.blockId, this.blockData);
+      newCoordinate.BranchOdds = this.BranchOdds;
+      if (this.BranchDirection != -1) {
+         newCoordinate.BranchDirection = this.BranchDirection + 1;
+         if (newCoordinate.BranchDirection > 3) {
+            newCoordinate.BranchDirection = 0;
+         }
+      }
+
+      return newCoordinate;
+   }
+
+   public static boolean isCoordinateString(String key) {
+      String[] coordinates = key.split(",");
+      return coordinates.length == 3;
+   }
+
+   public static ObjectCoordinate getCoordinateFromString(String key, String value) {
+      String[] coordinates = key.split(",", 3);
+      if (coordinates.length != 3) {
+         return null;
+      } else {
+         try {
+            int x = Integer.parseInt(coordinates[0]);
+            int z = Integer.parseInt(coordinates[1]);
+            int y = Integer.parseInt(coordinates[2]);
+            ObjectCoordinate newCoordinate = new ObjectCoordinate(x, y, z);
+            String workingDataString = value;
+            if (value.contains("#")) {
+               String[] stringSet = value.split("#");
+               workingDataString = stringSet[0];
+               String[] branchData = stringSet[1].split("@");
+               newCoordinate.BranchDirection = Integer.parseInt(branchData[0]);
+               newCoordinate.BranchOdds = Integer.parseInt(branchData[1]);
+            }
+
+            if (workingDataString.contains(".")) {
+               String[] stringSet = workingDataString.split("\\.");
+               workingDataString = stringSet[0];
+               newCoordinate.blockData = Integer.parseInt(stringSet[1]);
+            }
+
+            newCoordinate.blockId = Integer.parseInt(workingDataString);
+            return newCoordinate;
+         } catch (NumberFormatException var10) {
+            return null;
+         }
+      }
+   }
+}

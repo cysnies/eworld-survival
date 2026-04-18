@@ -1,0 +1,8 @@
+name: friend
+main: friend.Main
+version: 1.0
+softdepend: [lib]
+commands:
+  friend:
+    description: none.
+    usage: /<command> ?

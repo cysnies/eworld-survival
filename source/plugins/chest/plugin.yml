@@ -1,0 +1,11 @@
+name: chest
+main: chest.Chest
+version: 1.0
+softdepend: [lib]
+commands:
+  chest:
+    description: none.
+    usage: /<command> ?
+  ch:
+    description: none.
+    usage: /<command> ?

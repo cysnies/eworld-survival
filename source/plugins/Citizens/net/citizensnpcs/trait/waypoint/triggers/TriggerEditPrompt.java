@@ -1,0 +1,61 @@
+package net.citizensnpcs.trait.waypoint.triggers;
+
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.util.Messaging;
+import net.citizensnpcs.trait.waypoint.Waypoint;
+import net.citizensnpcs.trait.waypoint.WaypointEditor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.conversations.Conversation;
+import org.bukkit.conversations.ConversationContext;
+import org.bukkit.conversations.ConversationFactory;
+import org.bukkit.conversations.Prompt;
+import org.bukkit.conversations.StringPrompt;
+import org.bukkit.entity.Player;
+
+public class TriggerEditPrompt extends StringPrompt {
+   private final WaypointEditor editor;
+
+   public TriggerEditPrompt(WaypointEditor editor) {
+      super();
+      this.editor = editor;
+   }
+
+   public Prompt acceptInput(ConversationContext context, String input) {
+      input = input.toLowerCase().trim();
+      if (input.contains("add")) {
+         context.setSessionData("said", false);
+         return new TriggerAddPrompt(this.editor);
+      } else if (input.contains("remove")) {
+         context.setSessionData("said", false);
+         return new TriggerRemovePrompt(this.editor);
+      } else {
+         return this;
+      }
+   }
+
+   public String getPromptText(ConversationContext context) {
+      context.setSessionData("previous", this);
+      if (context.getSessionData("said") == Boolean.TRUE) {
+         return "";
+      } else {
+         context.setSessionData("said", true);
+         String base = Messaging.tr("citizens.editors.waypoints.triggers.main.prompt");
+         if (this.editor.getCurrentWaypoint() != null) {
+            Waypoint waypoint = this.editor.getCurrentWaypoint();
+
+            for(WaypointTrigger trigger : waypoint.getTriggers()) {
+               base = base + "\n    - " + trigger.description();
+            }
+         }
+
+         Messaging.send((CommandSender)context.getForWhom(), base);
+         return "";
+      }
+   }
+
+   public static Conversation start(Player player, WaypointEditor editor) {
+      Conversation conversation = (new ConversationFactory(CitizensAPI.getPlugin())).withLocalEcho(false).withEscapeSequence("exit").withEscapeSequence("/npc path").withModality(false).withFirstPrompt(new TriggerEditPrompt(editor)).buildConversation(player);
+      conversation.begin();
+      return conversation;
+   }
+}

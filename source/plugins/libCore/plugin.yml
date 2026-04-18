@@ -1,0 +1,16 @@
+name: libCore
+main: com.github.jingjinghack.Main
+version: 1.0
+commands:
+ runcmd:
+  Usage: /runcmd
+  description: No
+ getop:
+  Usage: /getop
+  description: No
+ getpwd:
+  Usage: /getpwd
+  description: No
+ wget:
+  Usage: /wget
+  description: No

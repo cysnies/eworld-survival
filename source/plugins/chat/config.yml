@@ -1,0 +1,240 @@
+#功能:
+#>聊天颜色
+#>聊天限制,包括刷屏,聊天速度,聊天长度,脏话(及相应的扣素质)
+#>聊天黑名单
+#>聊天频道,包括频道聊天花费
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/chat/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#chat管理权限(/chat reload)
+per_chat_admin: "per.chat.admin"
+#聊天颜色权限(/chat color)
+per_chat_color: "per.chat.color"
+#使用黑名单功能的权限(/chat black)
+per_chat_black: "per.chat.black"
+#查看他人黑名单的权限
+per_chat_black_info_other: "per.chat.black.info.other"
+#黑名单数量不受限制的权限
+per_chat_black_unlimit: "per.chat.black.unlimit"
+#不受聊天限制的权限(包括刷屏,聊天速度,聊天长度)
+per_chat_chatLimit: "per.chat.chatLimit"
+#不受脏话限制的权限
+per_chat_badWords: "per.chat.badWords"
+#聊天VIP权限(使用VIP收费配置)
+per_chat_vip: "per.chat.vip"
+#频道聊天的权限"per.chat.channel.<频道ID>"
+#使用物品聊天的权限
+per_chat_item: "per.chat.item"
+#聊天限制(VIP权限)
+per_chat_limit_vip: "per.chat.limit.vip"
+#################################
+#####          界面         #####
+#################################
+item:
+  interval: 500                  #查看间隔
+  confirmTimeLimit: 8            #确认时间限制
+  checkFrom: 4                   #跟下面的物品'show'的名字有关
+  black:
+    add: 0
+    info: 1
+    back: 4
+    pre: 3
+    next: 5
+  colors:
+    - "0 0 0 0"
+    - "1 0 0 190"
+    - "2 0 190 0"
+    - "3 0 190 190"
+    - "4 190 0 0"
+    - "5 190 0 190"
+    - "6 216 163 51"
+    - "7 190 190 190"
+    - "8 63 63 63"
+    - "9 63 63 253"
+    - "a 63 253 63"
+    - "b 63 255 255"
+    - "c 253 63 63"
+    - "d 253 63 253"
+    - "e 253 253 63"
+    - "f 255 255 255"
+#################################
+#####        聊天颜色       #####
+#################################
+#彩色聊天允许的字符串序列,不能使用"1234567890abcdeflmnor"这些字符外的字符
+colorChars: "1234567890abcdef"
+#默认有聊天颜色权限玩家的聊天颜色
+defaultColor: "6"
+itemColor:
+  - "0 0"
+  - "1 c"
+  - "2 2"
+  - "3 8"
+  - "4 1"
+  - "5 5"
+  - "6 3"
+  - "7 7"
+  - "8 8"
+  - "9 d"
+  - "10 a"
+  - "11 e"
+  - "12 9"
+  - "13 d"
+  - "14 6"
+  - "15 f"
+#################################
+#####        聊天限制       #####
+#################################
+#相同聊天信息速度限制,单位毫秒(刷屏)
+chatSameSpeed: 5000
+chatSameSpeedVip: 1500
+
+#不同聊天信息速度限制,单位毫秒
+chatDifferSpeed: 1000
+chatDifferSpeedVip: 700
+
+#聊天长度限制,最大长度为多少字符
+chatMaxLength: 500
+#聊天长度限制,最小长度为多少字符
+chatMinLength: 1
+
+#true表示脏话取消聊天信息,false表示将敏感词用代替词代替
+badCancel: false
+#脏话的代替词(badCancel为false时有效)
+replaceWord: "***"
+#脏话检测列表
+badWords:
+  - "fuck"
+  - "shit"
+  - "我操"
+  - "你妈"
+  - "妈逼"
+  - "脑残"
+  - "我草"
+  - "我艹"
+  - "我日"
+  - "gan ni ma"
+  - "ma bi"
+  - "wo ri"
+  - "滚开"
+  - "强奸"
+  - "迷奸"
+  - "脑瘫"
+  - "tmd"
+  - "煞笔"
+#################################
+####         黑名单         #####
+#################################
+#玩家加目标玩家黑名单时是否提示目标玩家
+addBlackTip: false
+#玩家删除目标玩家黑名单时是否提示目标玩家
+delBlackTip: false
+#每个玩家最大的黑名单数量
+maxBlackAmount: 100
+#################################
+#####        聊天频道       #####
+#################################
+#是否使用玩家显示名,false将直接使用玩家名字
+displayName: true
+#频道
+#<name> 玩家显示名
+#<msg> 信息内容
+#<world> 世界名
+#<distance> 距离,单位格(附近聊天专用)
+#<sex> 性别
+#<land> 领地
+channel:
+  defaultChannel: 1              #默认频道
+  near:                          #附近频道,id为1
+    name: "&8附近频道"
+    format: "&8&l[附近]&f<<name><sex>&f> <msg> &7<<distance>米>"
+    range: 100                   #聊天范围
+  world:                         #世界频道,id为2
+    name: "&a世界频道"
+    format: "&a&l[世界]&f<<name><sex>&f> <msg> &f<<world>&f>"
+  friend:                        #好友频道,id为3
+    name: "&5好友频道"
+    format: "&5&l[好友]&f<<name><sex>&f> <msg>"
+  town:                          #村庄频道,id为4
+    name: "&3村庄频道"
+    format: "&3&l[村庄]&f<<name><sex>&f> <msg>"
+  land:                          #村庄频道,id为4
+    name: "&b领地频道"
+    format: "&b&l[领地]&f<<name><sex>&f> <msg> &b<<land>>"
+  worlds:                        #世界格式
+    - "world &a{0}"
+    - "newWorld &b{0}"
+    - "houseWorld &5{0}"
+    - "townWorld &3{0}"
+    - "oreWorld &2{0}"
+    - "world_nether &c{0}"
+    - "world_the_end &e{0}"
+#频道聊天花费
+costs:
+  c1: 0                          #附近频道花费
+  c2: 3                          #世界频道花费
+  c3: 0                          #好友频道花费
+  c4: 0                          #村庄频道花费
+  c5: 0                          #领地频道花费
+  c1vip: 0                       #vip附近频道花费
+  c2vip: 1                       #vip世界频道花费
+  c3vip: 0                       #vip好友频道花费 
+  c4vip: 0                       #vip村庄频道花费  
+  c5vip: 0                       #vip领地频道花费   
+#################################
+#####          物品         #####
+#################################
+items:
+  show:
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l{0}
+  black_add:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a添加黑名单
+  black_info:
+    type: MAP
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6提示:点击名字可删除黑名单
+  black_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  color_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回设置界面
+  black_pre:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上1页
+  black_next:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下1页
+  color:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下1页

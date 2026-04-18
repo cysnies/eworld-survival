@@ -1,0 +1,122 @@
+package com.earth2me.essentials.commands;
+
+import com.earth2me.essentials.I18n;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.utils.NumberUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+public class Commandclearinventory extends EssentialsCommand {
+   static int BASE_AMOUNT = 100000;
+   static int EXTENDED_CAP = 8;
+
+   public Commandclearinventory() {
+      super("clearinventory");
+   }
+
+   public void run(Server server, User user, String commandLabel, String[] args) throws Exception {
+      this.parseCommand(server, user.getBase(), args, user.isAuthorized("essentials.clearinventory.others"), user.isAuthorized("essentials.clearinventory.all"));
+   }
+
+   protected void run(Server server, CommandSender sender, String commandLabel, String[] args) throws Exception {
+      this.parseCommand(server, sender, args, true, true);
+   }
+
+   private void parseCommand(Server server, CommandSender sender, String[] args, boolean allowOthers, boolean allowAll) throws Exception {
+      List<Player> players = new ArrayList();
+      int offset = 0;
+      if (sender instanceof Player) {
+         players.add((Player)sender);
+      }
+
+      if (allowAll && args.length > 0 && args[0].contentEquals("*")) {
+         sender.sendMessage(I18n._("inventoryClearingFromAll"));
+         offset = 1;
+         players = Arrays.asList(server.getOnlinePlayers());
+      } else if (allowOthers && args.length > 0 && args[0].trim().length() > 2) {
+         offset = 1;
+         players = server.matchPlayer(args[0].trim());
+      }
+
+      if (players.size() < 1) {
+         throw new PlayerNotFoundException();
+      } else {
+         for(Player player : players) {
+            this.clearHandler(sender, player, args, offset, players.size() < EXTENDED_CAP);
+         }
+
+      }
+   }
+
+   protected void clearHandler(CommandSender sender, Player player, String[] args, int offset, boolean showExtended) throws Exception {
+      short data = -1;
+      int type = -1;
+      int amount = -1;
+      if (args.length > offset + 1 && NumberUtil.isInt(args[offset + 1])) {
+         amount = Integer.parseInt(args[offset + 1]);
+      }
+
+      if (args.length > offset) {
+         if (args[offset].equalsIgnoreCase("**")) {
+            type = -2;
+         } else if (!args[offset].equalsIgnoreCase("*")) {
+            String[] split = args[offset].split(":");
+            ItemStack item = this.ess.getItemDb().get(split[0]);
+            type = item.getTypeId();
+            if (split.length > 1 && NumberUtil.isInt(split[1])) {
+               data = Short.parseShort(split[1]);
+            } else {
+               data = item.getDurability();
+            }
+         }
+      }
+
+      if (type == -1) {
+         if (showExtended) {
+            sender.sendMessage(I18n._("inventoryClearingAllItems", player.getDisplayName()));
+         }
+
+         player.getInventory().clear();
+      } else if (type == -2) {
+         if (showExtended) {
+            sender.sendMessage(I18n._("inventoryClearingAllArmor", player.getDisplayName()));
+         }
+
+         player.getInventory().clear();
+         player.getInventory().setArmorContents((ItemStack[])null);
+      } else if (data == -1) {
+         ItemStack stack = new ItemStack(type);
+         if (showExtended) {
+            sender.sendMessage(I18n._("inventoryClearingAllStack", stack.getType().toString().toLowerCase(Locale.ENGLISH), player.getDisplayName()));
+         }
+
+         player.getInventory().clear(type, data);
+      } else if (amount == -1) {
+         ItemStack stack = new ItemStack(type, BASE_AMOUNT, data);
+         ItemStack removedStack = (ItemStack)player.getInventory().removeItem(new ItemStack[]{stack}).get(0);
+         int removedAmount = BASE_AMOUNT - removedStack.getAmount();
+         if (removedAmount > 0 || showExtended) {
+            sender.sendMessage(I18n._("inventoryClearingStack", removedAmount, stack.getType().toString().toLowerCase(Locale.ENGLISH), player.getDisplayName()));
+         }
+      } else {
+         if (amount < 0) {
+            amount = 1;
+         }
+
+         ItemStack stack = new ItemStack(type, amount, data);
+         if (player.getInventory().containsAtLeast(stack, amount)) {
+            sender.sendMessage(I18n._("inventoryClearingStack", amount, stack.getType().toString().toLowerCase(Locale.ENGLISH), player.getDisplayName()));
+            player.getInventory().removeItem(new ItemStack[]{stack});
+         } else if (showExtended) {
+            sender.sendMessage(I18n._("inventoryClearFail", player.getDisplayName(), amount, stack.getType().toString().toLowerCase(Locale.ENGLISH)));
+         }
+      }
+
+   }
+}

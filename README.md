@@ -6,7 +6,7 @@
 survival/
 ├── docker-compose.yml
 ├── Dockerfile
-├── db.sh                      # 数据库：初始化 + 迁移（唯一 Shell 入口）
+├── db.sh                      # 数据库：初始化 + 迁移
 ├── env.example
 ├── docker/docker-entrypoint.sh
 ├── sql/

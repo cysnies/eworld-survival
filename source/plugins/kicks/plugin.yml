@@ -1,0 +1,8 @@
+name: kicks
+main: com.minecraft001.Main
+version: 1.0
+softdepend: [lib]
+commands:
+  kicks:
+    description: none.
+    usage: /<command> ?
