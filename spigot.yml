@@ -1,0 +1,215 @@
+# This is the main configuration file for Spigot.
+# As you can see, there's tons to configure. Some options may impact gameplay, so use
+# with caution, and make sure you know what each option does before configuring.
+# For a reference for any variable inside this file, check out the Spigot wiki at
+# http://www.spigotmc.org/wiki/spigot-configuration/
+# 
+# If you need help with the configuration or have any questions related to Spigot,
+# join us at the IRC or drop by our forums and leave a post.
+# 
+# IRC: #spigot @ irc.esper.net ( http://webchat.esper.net/?channel=spigot )
+# Forums: http://www.spigotmc.org/forum/
+
+config-version: 3
+commands:
+  tab-complete: false
+  spam-exclusions:
+  - /skill
+  log: true
+messages:
+  whitelist: You are not whitelisted on this server!
+  unknown-command: 未知命令.
+  server-full: 服务器已满!
+  outdated-client: 加入失败,你的客户端版本比服务端低!
+  outdated-server: 加入失败,你的客户端版本比服务端高!
+listeners:
+- port: default
+  host: default
+  netty: true
+settings:
+  netty-threads: 10
+  prevent-proxies: false
+  bungeecord-addresses:
+  - 127.0.0.1
+  bungeecord: true
+  timeout-time: 60
+  restart-on-crash: true
+  restart-script: ./start.sh
+  log-filters:
+  - ^(.*)(/login)(.*)$
+world-settings:
+  default:
+    verbose: true
+    view-distance: 3
+    chunks-per-tick: 5
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    anti-xray:
+      enabled: false
+      engine-mode: 1
+      blocks:
+      - 1
+    mob-spawn-range: 4
+    growth:
+      cactus-modifier: 50
+      cane-modifier: 50
+      melon-modifier: 50
+      mushroom-modifier: 50
+      pumpkin-modifier: 50
+      sapling-modifier: 50
+      wheat-modifier: 50
+    entity-activation-range:
+      animals: 12
+      monsters: 24
+      misc: 12
+    entity-tracking-range:
+      players: 24
+      animals: 20
+      monsters: 32
+      misc: 20
+      other: 20
+    ticks-per:
+      hopper-transfer: 40
+      hopper-check: 40
+    random-light-updates: false
+  houseWorld:
+    verbose: true
+    view-distance: 3
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    chunks-per-tick: 5
+    anti-xray:
+      enabled: false
+      engine-mode: 1
+      blocks:
+      - 1
+    ticks-per:
+      hopper-check: 40
+      hopper-transfer: 40
+    random-light-updates: false
+    mob-spawn-range: 4
+    growth:
+      cactus-modifier: 50
+      cane-modifier: 50
+      melon-modifier: 50
+      mushroom-modifier: 50
+      pumpkin-modifier: 50
+      sapling-modifier: 50
+      wheat-modifier: 50
+    entity-activation-range:
+      animals: 8
+      monsters: 8
+      misc: 8
+    entity-tracking-range:
+      players: 20
+      animals: 16
+      monsters: 16
+      misc: 16
+      other: 16
+  oreWorld:
+    verbose: true
+    view-distance: 3
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    chunks-per-tick: 5
+    anti-xray:
+      enabled: false
+      engine-mode: 1
+      blocks:
+      - 1
+    ticks-per:
+      hopper-check: 40
+      hopper-transfer: 40
+    random-light-updates: false
+    mob-spawn-range: 4
+    growth:
+      cactus-modifier: 50
+      cane-modifier: 50
+      melon-modifier: 50
+      mushroom-modifier: 50
+      pumpkin-modifier: 50
+      sapling-modifier: 50
+      wheat-modifier: 50
+    entity-activation-range:
+      animals: 8
+      monsters: 8
+      misc: 8
+    entity-tracking-range:
+      players: 20
+      animals: 16
+      monsters: 16
+      misc: 16
+      other: 16
+  world_nether:
+    verbose: true
+    view-distance: 3
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    chunks-per-tick: 5
+    anti-xray:
+      enabled: false
+      engine-mode: 1
+      blocks:
+      - 1
+    ticks-per:
+      hopper-check: 20
+      hopper-transfer: 20
+    random-light-updates: false
+    mob-spawn-range: 4
+    growth:
+      cactus-modifier: 50
+      cane-modifier: 50
+      melon-modifier: 50
+      mushroom-modifier: 50
+      pumpkin-modifier: 50
+      sapling-modifier: 50
+      wheat-modifier: 50
+    entity-activation-range:
+      animals: 8
+      monsters: 8
+      misc: 8
+    entity-tracking-range:
+      players: 20
+      animals: 16
+      monsters: 16
+      misc: 16
+      other: 16
+  world_the_end:
+    verbose: true
+    view-distance: 3
+    merge-radius:
+      exp: 3.0
+      item: 2.5
+    chunks-per-tick: 5
+    anti-xray:
+      enabled: false
+      engine-mode: 1
+      blocks:
+      - 1
+    ticks-per:
+      hopper-check: 40
+      hopper-transfer: 40
+    random-light-updates: false
+    mob-spawn-range: 4
+    growth:
+      cactus-modifier: 50
+      cane-modifier: 50
+      melon-modifier: 50
+      mushroom-modifier: 50
+      pumpkin-modifier: 50
+      sapling-modifier: 50
+      wheat-modifier: 50
+    entity-activation-range:
+      animals: 8
+      monsters: 8
+      misc: 8
+    entity-tracking-range:
+      players: 20
+      animals: 16
+      monsters: 16
+      misc: 16
+      other: 16

@@ -1,0 +1,13 @@
+users:
+  GroupManagerVirtualUser:
+    group: default
+    subgroups: []
+    permissions:
+    - groupmanager.noofflineperms
+  kongkongye:
+    group: default
+    subgroups:
+    - level_158
+    permissions:
+    - per.fix.checkNew
+    - per.pack.open.1

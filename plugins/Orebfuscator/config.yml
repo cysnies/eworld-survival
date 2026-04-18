@@ -1,0 +1,88 @@
+ConfigVersion: 10
+Integers:
+  EngineMode: 2
+  InitialRadius: 1
+  UpdateRadius: 2
+  ProcessingThreads: 3
+  MaxLoadedCacheFiles: 64
+  ProximityHiderDistance: 14
+  ProximityHiderID: 1
+  ProximityHiderEnd: 255
+  AirGeneratorMaxChance: 43
+  OrebfuscatorPriority: 1
+  CompressionLevel: 1
+Booleans:
+  UseProximityHider: true
+  UseSpecialBlockForProximityHider: true
+  UpdateOnDamage: true
+  DarknessHideBlocks: false
+  NoObfuscationForOps: false
+  NoObfuscationForPermission: false
+  UseCache: true
+  LoginNotification: true
+  AntiTexturePackAndFreecam: true
+  Enabled: true
+  CheckForUpdates: false
+Lists:
+  ObfuscateBlocks:
+  - 14
+  - 15
+  - 16
+  - 21
+  - 48
+  - 52
+  - 54
+  - 56
+  - 73
+  - 74
+  - 89
+  - 129
+  - 130
+  - 153
+  NetherObfuscateBlocks:
+  - 89
+  - 153
+  DarknessBlocks:
+  - 52
+  - 54
+  ProximityHiderBlocks:
+  - 23
+  - 48
+  - 52
+  - 54
+  - 56
+  - 58
+  - 61
+  - 62
+  - 116
+  - 129
+  - 130
+  - 145
+  - 146
+  DisabledWorlds:
+  - houseWorld
+  - world_nether
+  - world_the_end
+  RandomBlocks:
+  - 1
+  - 4
+  - 5
+  - 14
+  - 15
+  - 16
+  - 21
+  - 46
+  - 48
+  - 49
+  - 56
+  - 73
+  - 82
+  - 129
+  NetherRandomBlocks:
+  - 13
+  - 87
+  - 88
+  - 112
+  - 153
+Strings:
+  CacheLocation: orebfuscator_cache

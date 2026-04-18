@@ -1,0 +1,323 @@
+#################################
+#####       物品类型        #####
+#################################
+items:
+  helmet_strong:
+    type: DIAMOND_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DURABILITY: 3
+        PROTECTION_ENVIRONMENTAL: 4
+        PROTECTION_FIRE: 3
+  big_armor_1:
+    type: DIAMOND_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DURABILITY: 3
+  big_armor_2:
+    type: DIAMOND_CHESTPLATE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DURABILITY: 3
+  big_armor_3:
+    type: DIAMOND_LEGGINGS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DURABILITY: 3
+  big_armor_4:
+    type: DIAMOND_BOOTS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DURABILITY: 3
+  sword_normal:
+    type: IRON_SWORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DAMAGE_ALL: 8
+  bow_good:
+    type: BOW
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        ARROW_KNOCKBACK: 2
+        ARROW_DAMAGE: 10
+  potion_low:
+    inherit:
+      - "potion_low_1"
+      - "potion_low_2"
+  potion_low_1:
+    type: POTION
+    chance: 800
+    damage: 8197
+  potion_low_2:
+    type: POTION
+    chance: 200
+    damage: 8229
+##################################
+  animal_drop:
+    inherit:
+      - "potion_low"
+      - "animal_key"
+  animal_key:                    #恶魔岛钥匙
+    chance: 1000
+    type: NAME_TAG
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3恶魔岛
+      lore:
+      - '§3所有者: §6fyxridd'
+      - '§3有效期: §5§a永久'
+      - '§3提示: §6进入恶魔岛隐秘房间的钥匙.'
+      - §7(钥匙)
+    attributes:
+      attribute1:
+        amount: 0.0
+        type: generic.maxHealth
+        name: |
+          key: 恶魔岛
+          owner: fyxridd
+          start: 0
+          time: -1
+          tip: §6进入恶魔岛隐秘房间的钥匙.
+        operation: 0
+        uuid: 139292bd-88b8-4c8f-8380-dbb9df24cc38
+  animal_boss:
+    inherit:
+      - "animal_boss_1"
+      - "animal_boss_2"
+      - "animal_boss_3"
+      - "animal_boss_4"
+      - "animal_boss_5"
+      - "animal_boss_6"
+      - "animal_boss_7"
+      - "animal_boss_8"
+      - "animal_boss_9"
+      - "animal_boss_10"
+      - "animal_boss_11"
+      - "animal_boss_12"
+  animal_boss_1:
+    type: DIAMOND_SWORD
+    chance: 700
+    damage: 600
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      lore:
+      - §c+无法修复+
+      enchants:
+        DAMAGE_UNDEAD: 3
+        DAMAGE_ALL: 4
+        KNOCKBACK: 2
+        DAMAGE_ARTHROPODS: 3
+        FIRE_ASPECT: 2
+  animal_boss_2:
+    type: DIAMOND_CHESTPLATE
+    chance: 700
+    damage: 263
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      lore:
+      - §c+无法修复+
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+        PROTECTION_FIRE: 3
+        THORNS: 2
+  animal_boss_3:
+    type: DIAMOND_HELMET
+    chance: 700
+    damage: 200
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      lore:
+      - §c+无法修复+
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+        OXYGEN: 3
+        THORNS: 2
+  animal_boss_4:
+    type: DIAMOND_LEGGINGS
+    chance: 700
+    damage: 315
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      lore:
+      - §c+无法修复+
+      enchants:
+        DURABILITY: 3
+        PROTECTION_ENVIRONMENTAL: 4
+        PROTECTION_FIRE: 3
+        THORNS: 2
+  animal_boss_5:
+    type: DIAMOND_BOOTS
+    chance: 700
+    damage: 200
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      lore:
+      - §c+无法修复+
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+        THORNS: 2
+  animal_boss_6:
+    type: RAW_CHICKEN
+    amount: 64
+  animal_boss_7:
+    type: PORK
+    amount: 64
+  animal_boss_8:
+    type: RAW_BEEF
+    amount: 64
+  animal_boss_9:
+    type: POTION
+    chance: 800
+    damage: 8197
+    amount: 8
+  animal_boss_10:
+    type: POTION
+    chance: 800
+    damage: 8197
+    amount: 8
+  animal_boss_11:
+    type: POTION
+    chance: 800
+    damage: 8197
+    amount: 8
+  animal_boss_12:
+    type: POTION
+    chance: 800
+    damage: 8197
+    amount: 8
+###############################
+  defend_sword:
+    type: IRON_SWORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        DAMAGE_ALL: 2
+  defend_bow:
+    type: BOW
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        ARROW_DAMAGE: 4
+  defend_armor_1:
+    type: LEATHER_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 0
+        BLUE: 0
+        GREEN: 102
+  defend_armor_2:
+    type: LEATHER_CHESTPLATE
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 0
+        BLUE: 0
+        GREEN: 102
+  defend_armor_3:
+    type: LEATHER_LEGGINGS
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 0
+        BLUE: 0
+        GREEN: 102
+  defend_armor_4:
+    type: LEATHER_BOOTS
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 0
+        BLUE: 0
+        GREEN: 102
+  arrow:
+    type: ARROW
+  attack_armor_1:
+    type: LEATHER_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 255
+        BLUE: 0
+        GREEN: 0
+  attack_armor_2:
+    type: LEATHER_CHESTPLATE
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 255
+        BLUE: 0
+        GREEN: 0
+  attack_armor_3:
+    type: LEATHER_LEGGINGS
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 255
+        BLUE: 0
+        GREEN: 0
+  attack_armor_4:
+    type: LEATHER_BOOTS
+    meta:
+      ==: ItemMeta
+      meta-type: LEATHER_ARMOR
+      enchants:
+        DURABILITY: 3
+      color:
+        ==: Color
+        RED: 255
+        BLUE: 0
+        GREEN: 0

@@ -1,0 +1,868 @@
+# Citizens NPC Storage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+last-created-npc-id: 15
+npc:
+  '0':
+    name: MC_DeeJee
+    traits:
+      spawned: true
+      waypoints:
+        linear: {}
+        provider: linear
+      location:
+        world: world
+        x: '-6.171037993289628'
+        y: '61.0'
+        z: '12.30484948605546'
+        yaw: '-65.5837173461914'
+        pitch: '0.0'
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l这是末地传送门.'
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta: {}
+          enchantments:
+            '16': 1
+        helmet:
+          type: 298
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            displayname: §9岩浆如流,把§2liulida§9淹没.§f
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        chestplate:
+          type: 299
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        leggings:
+          type: 300
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        boots:
+          type: 301
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+      owner: fyxridd
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: waypoints,equipment,owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '1':
+    name: Ceceil
+    traits:
+      spawned: true
+      waypoints:
+        linear:
+          points:
+            '0':
+              location:
+                world: world
+                x: '5.0'
+                y: '61.0'
+                z: '12.0'
+                yaw: '0.0'
+                pitch: '0.0'
+        provider: linear
+      location:
+        world: world
+        x: '5.0'
+        y: '61.0'
+        z: '12.0'
+        yaw: '44.41636657714844'
+        pitch: '0.0'
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l这是地狱传送门.'
+      owner: fyxridd
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta: {}
+          enchantments:
+            '16': 1
+        helmet:
+          type: 298
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            displayname: §9岩浆如流,把§2liulida§9淹没.§f
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        chestplate:
+          type: 299
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        leggings:
+          type: 300
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+        boots:
+          type: 301
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 65280
+          enchantments:
+            '0': 1
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: waypoints,equipment,owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '2':
+    name: '&a&l矿物世界传送'
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '-12.53962009895645'
+        y: '61.0'
+        z: '50.536785540588774'
+        yaw: '187.09353637695312'
+        pitch: '0.0'
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l你知道吗?矿物世界加载新区块会很卡,这是正常的事.'
+      equipment:
+        hand:
+          type: 278
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 298
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            displayname: §a玩家§3fannao852§a加入游戏,当前在线§d78§a人.§f
+            armor:
+              color: 10511680
+          enchantments:
+            '0': 1
+        chestplate:
+          type: 299
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 10511680
+          enchantments:
+            '0': 1
+        leggings:
+          type: 300
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 10511680
+          enchantments:
+            '0': 1
+        boots:
+          type: 301
+          amount: 1
+          durability: 0
+          mdata: 0
+          meta:
+            armor:
+              color: 10511680
+          enchantments:
+            '0': 1
+      owner: fyxridd
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,text,spawned,speech,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '3':
+    name: '&a&l生存提示'
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '-2.6024693741407092'
+        y: '61.0'
+        z: '43.50309343951704'
+        yaw: '218.21621704101562'
+        pitch: '0.0'
+      text:
+        talk-close: true
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l嘿!我悄悄地告诉你,其实这里就是生存世界.'
+          '1': '&a&l为了防止熊孩子破坏,生存世界已经取消随机传送.'
+          '2': '&a&l生存世界如果想找建筑之地,请尽量跑得远,勿必不要忘记圈地!'
+      owner: fyxridd
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 306
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 307
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 308
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 309
+          amount: 1
+          durability: 0
+          mdata: 0
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '4':
+    name: '&a&l家园传送'
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '8.536018294166556'
+        y: '61.0'
+        z: '50.629383495157754'
+        yaw: '87.46449279785156'
+        pitch: '-12.707108497619629'
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l你知道吗?家园是不允许给其它人添加权限的,是最安全的!!!'
+      owner: fyxridd
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 306
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 307
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 308
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 309
+          amount: 1
+          durability: 0
+          mdata: 0
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '5':
+    name: fyxridd
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '2.220271985925195'
+        y: '64.0'
+        z: '2.5066905791159932'
+        yaw: '26.977638244628906'
+        pitch: '19.134456634521484'
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': 你好,欢迎来到E世界,最完善的原版生存娱乐服务器~
+      owner: fyxridd
+      speech: chat
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '7':
+    name: '&3&l服务员'
+    traits:
+      location:
+        world: world
+        x: '-402.377803911779'
+        y: '157.0'
+        z: '-297.0642391484966'
+        yaw: '-11.256721496582031'
+        pitch: '0.0'
+      spawned: true
+      owner: fyxridd
+      speech: chat
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l你好啊,欢迎来系统商城购买你想要的东西.'
+          '1': '&6&l系统商城的商品还会继续添加的...'
+          '2': '&a&l悄悄地告诉你,在购买玩家商店的商品前输入/see查看商品有助于防止受骗哦.'
+          '3': 这里有便宜的建筑材料,作物,动物掉落物~
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: owner,type,lookclose,text,spawned,speech,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '8':
+    name: '&a&l新世界传送'
+    traits:
+      location:
+        world: world
+        x: '-2.6285306706800853'
+        y: '61.0'
+        z: '50.48240783288927'
+        yaw: '102.97026062011719'
+        pitch: '0.0'
+      owner: fyxridd
+      speech: chat
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 306
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 307
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 308
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 309
+          amount: 1
+          durability: 0
+          mdata: 0
+      spawned: true
+      text:
+        talk-close: false
+        random-talker: true
+        realistic-looking: false
+        range: '5.0'
+        talkitem: '0'
+        text:
+          '0': '&a&l你好,这是新世界的随机传送门.'
+          '1': '&a&l新世界里有免费领地可以领取哦,输入/land到选择范围界面领取吧~'
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,text,spawned,location,speech
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '10':
+    name: 勇者之塔传送
+    traits:
+      spawned: true
+      owner: fyxridd
+      location:
+        world: world
+        x: '-2.2447986695020488'
+        y: '61.0'
+        z: '24.430673356691248'
+        yaw: '-21.913055419921875'
+        pitch: '0.0'
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 310
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 311
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 312
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 313
+          amount: 1
+          durability: 0
+          mdata: 0
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,spawned,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '11':
+    name: 刷怪区传送
+    traits:
+      owner: fyxridd
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 310
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 311
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 312
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 313
+          amount: 1
+          durability: 0
+          mdata: 0
+      spawned: true
+      location:
+        world: world
+        x: '2.579515573873979'
+        y: '61.0'
+        z: '24.57334414819054'
+        yaw: '25.849266052246094'
+        pitch: '0.0'
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,spawned,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '12':
+    name: 骷髅逃亡传送
+    traits:
+      owner: fyxridd
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 310
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 311
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 312
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 313
+          amount: 1
+          durability: 0
+          mdata: 0
+      spawned: true
+      location:
+        world: world
+        x: '-2.367330529098332'
+        y: '61.0'
+        z: '34.308659344872765'
+        yaw: '264.8186340332031'
+        pitch: '0.0'
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,spawned,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '13':
+    name: 恶魔岛传送
+    traits:
+      owner: fyxridd
+      spawned: true
+      location:
+        world: world
+        x: '2.699999988079071'
+        y: '61.0'
+        z: '32.37133723697873'
+        yaw: '0.0'
+        pitch: '0.0'
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 310
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 311
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 312
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 313
+          amount: 1
+          durability: 0
+          mdata: 0
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,spawned,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '14':
+    name: 怪物攻城传送
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '2.366710874225708'
+        y: '61.0'
+        z: '39.61532312108614'
+        yaw: '183.87905883789062'
+        pitch: '0.0'
+      equipment:
+        hand:
+          type: 276
+          amount: 1
+          durability: 0
+          mdata: 0
+        helmet:
+          type: 310
+          amount: 1
+          durability: 0
+          mdata: 0
+        chestplate:
+          type: 311
+          amount: 1
+          durability: 0
+          mdata: 0
+        leggings:
+          type: 312
+          amount: 1
+          durability: 0
+          mdata: 0
+        boots:
+          type: 313
+          amount: 1
+          durability: 0
+          mdata: 0
+      owner: fyxridd
+      lookclose:
+        enabled: true
+        range: '5.0'
+        realisticlooking: false
+    traitnames: equipment,owner,type,lookclose,spawned,location
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true

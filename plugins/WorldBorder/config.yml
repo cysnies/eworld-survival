@@ -1,0 +1,54 @@
+cfg-version: 7
+message: 你到达了世界边缘.
+round-border: false
+debug-mode: false
+whoosh-effect: false
+portal-redirection: true
+knock-back-dist: 4.0
+timer-delay-ticks: 10
+remount-delay-ticks: 0
+dynmap-border-enabled: true
+dynmap-border-message: The border of the world.
+worlds:
+  world:
+    x: 0.010437031050897327
+    z: 0.16570297195894856
+    radiusX: 10000
+    radiusZ: 10000
+    wrapping: false
+  world_nether:
+    x: 0.5
+    z: 0.5
+    radiusX: 5000
+    radiusZ: 5000
+    wrapping: false
+  world_the_end:
+    x: -10.0
+    z: 10.0
+    radiusX: 110
+    radiusZ: 110
+    wrapping: false
+  oreWorld:
+    x: 0.0
+    z: 0.0
+    radiusX: 5000
+    radiusZ: 5000
+    wrapping: false
+  newWorld:
+    x: 0.5
+    z: 0.5
+    radiusX: 8000
+    radiusZ: 8000
+    wrapping: false
+  houseWorld:
+    x: 6000.668603729787
+    z: 6000.308749764685
+    radiusX: 6050
+    radiusZ: 6050
+    wrapping: false
+  townWorld:
+    x: 10000.0
+    z: 10000.0
+    radiusX: 11000
+    radiusZ: 11000
+    wrapping: false

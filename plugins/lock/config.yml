@@ -1,0 +1,88 @@
+#功能:
+#>收费锁(同时会自动限制非玩家的实体开门)
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/lock/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#管理权限
+per_lock_admin: "per.lock.admin"
+#创建收费门权限
+per_lock_create: "per.lock.create"
+#创建钥匙的权限
+per_lock_create_key: "per.lock.create.key"
+#使用收费门权限
+per_lock_use: "per.lock.use"
+#收费门VIP权限(免税,创建钥匙花费少)
+per_lock_vip: "per.lock.vip"
+#创建点券收费门权限
+per_lock_create_ticket: "per.lock.create.ticket"
+#################################
+#####          配置         #####
+#################################
+#使用门间隔,单位毫秒
+interval: 500
+#用作门的id
+doorId: 71
+#禁止建立收费锁的世界(无管理权限的玩家)
+banWorlds:
+  - "houseWorld"
+  - "oreWorld"
+  - "world_the_end"
+#是否必须sneak,false表示可以sneak也可以不sneak
+sneak: true
+#离开是否收费
+leaveCost: false
+#收费上限
+max: 1000
+#点券收费上限
+maxTicket: 5
+#有管理权限的收费上限(per_lock_admin)
+adminMax: 10000
+#收税百分比(0-100,默认为10,此情况下比如玩家右键门,付费100,则锁所有者获得90,其中10会被作为税收)
+rate: 10
+#成功时是否提示锁的所有者
+tipOwner: true
+#是否取消僵尸砸破坏被锁的门与
+cancelZombie: true
+
+#锁标记
+lock: "lock"
+#点券收费锁标记
+lockTicket: "lockt"
+#牌子显示配置
+line1: "&5[锁]&3"              #此行是用来判断一个牌子是否为锁的,防止假冒锁
+line2: "&1花费: &5{0}金币"     #注意不要有数字!
+line2ticket: "&1花费: &4{0}点券"  #注意不要有数字!
+line2Check: "点券"             #检测用
+checkStart: 8                  #第二行检测从第几个开始
+line3: "&{0}&{1}[进]&{2}&{3}[出]"
+allowColor: "a"
+allowLine: "a"                 #用来判断
+denyColor: "c"
+denyLine: "m"
+line1Empty: "空"               #表示背包必须为空
+line1Money: "钱"               #表示身上金币必须为0
+line1Effect: "效"              #表示身上必须没有药效
+
+#钥匙
+key:
+  item: 421                    #用做钥匙的物品ID
+  show:                        #钥匙物品的显示
+    name: "&3{0}"
+    lore:
+      - "&3所有者: &6{0}"
+      - "&3有效期: &5{0}"
+      - "&3提示: &6{0}"
+      - "&7(钥匙)"
+    length: 30                 #提示最大长度(管理权限除外)
+  out: true                    #钥匙锁是否允许出来
+  flag: "key"                  #建立时第三行前缀,表示建立钥匙锁(格式:'flag:钥匙名')
+  format: "&1钥匙:&5 {0}"      #钥匙显示格式(牌子上)
+  max: 1000                    #每次复制钥匙数量上限(管理权限除外)
+  length: 7                    #钥匙名长度上限
+  cost: 4                      #创建一个钥匙花费
+  costVip: 1                   #VIP创建钥匙花费

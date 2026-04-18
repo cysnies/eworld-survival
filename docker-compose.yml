@@ -1,0 +1,78 @@
+# Minecraft 1.6.2（CraftBukkit）— 当前目录挂载为 /server
+#
+# ===== 复用「已在本机运行的E世界空岛服 」里的 MySQL 容器 =====
+#
+# 方式 A — 经宿主机已映射端口（默认，无需额外 Docker 网络）
+#   · 空岛服 的 mysql 已发布端口（如 33060:3306），survival 在容器内连宿主机上的该端口。
+#   · .env：MYSQL_HOST=host.docker.internal，MYSQL_PORT=<与 reference 的 MYSQL_PUBLISH_PORT 一致>
+#   · Linux 必须保留下方 extra_hosts: host.docker.internal:host-gateway。
+#   · 不需要、也不要求与 空岛服 加入同一 compose 网络。
+#
+# 方式 B — 与空岛服共用同一 Docker bridge（可选，不经宿主机端口转发）
+#   · 容器内需使用服务名 mysql:3306，要求 survival 加入 **空岛服 mysql 容器所在网络**（多为 <项目目录>_default）。
+#   · 按文件底部「可选网络」注释操作；.env：MYSQL_HOST=mysql，MYSQL_PORT=3306；可去掉 extra_hosts。
+#
+# 可选：本文件内注释的「独立 mysql」，仅在不使用 空岛服/MySQL 时启用。
+
+services:
+  survival:
+    build:
+      context: .
+    image: cysnies/eworld-survival:latest
+    ports:
+      - "${PUBLISH_PORT:-25565}:25565"
+      - "${RCON_PUBLISH_PORT:-25575}:25575"
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST:-host.docker.internal}
+      MYSQL_PORT: ${MYSQL_PORT:-33060}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-mc001}
+      MYSQL_USER: ${MYSQL_USER:-mc001}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme}
+      MC_SERVER_PORT: ${MC_SERVER_PORT:-25565}
+    # 方式 A（默认）：Linux 解析 host.docker.internal → 宿主机网关，以连接「映射到宿主机的 MySQL 端口」
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - .:/server
+    restart: unless-stopped
+    networks:
+      - default
+      # 方式 B：与 空岛服 共用 MySQL 容器网络时，取消下一行及文件末尾 mysql_shared 段的注释，并配置 .env（MYSQL_HOST=mysql，MYSQL_PORT=3306）
+      # - mysql_shared
+
+    # 仅当启用下方独立 mysql 服务时取消注释：
+    # depends_on:
+    #   mysql:
+    #     condition: service_healthy
+
+  # --- 可选：本 compose 独占的 MySQL 8.0 ---
+  # mysql:
+  #   image: mysql:8.0
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE:-mc001}
+  #     MYSQL_USER: ${MYSQL_USER:-mc001}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme}
+  #   ports:
+  #     - "${MYSQL_PUBLISH_PORT:-33062}:3306"
+  #   volumes:
+  #     - survival-mysql-data:/var/lib/mysql
+  #     - ./sql/schema/init_mc001.sql:/docker-entrypoint-initdb.d/01-mc001-schema.sql:ro
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" || exit 1"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 30
+  #     start_period: 20s
+  #   restart: unless-stopped
+
+# 方式 B 使用的「外部」网络：名称需与 `docker network ls` 中 空岛服 的 MySQL 所在网络一致
+# 取消注释前请先在 survival 服务的 networks 中增加 - mysql_shared
+# networks:
+#   mysql_shared:
+#     external: true
+#     name: ${REFERENCE_STACK_NETWORK:-reference_default}
+
+# volumes:
+#   survival-mysql-data:

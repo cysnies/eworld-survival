@@ -1,0 +1,54 @@
+# This is the main configuration file for Bukkit.
+# As you can see, there's actually not that much to configure without any plugins.
+# For a reference for any variable inside this file, check out the bukkit wiki at
+# http://wiki.bukkit.org/Bukkit.yml
+settings:
+  allow-end: true
+  warn-on-overload: true
+  permissions-file: permissions.yml
+  update-folder: update
+  ping-packet-limit: 300
+  use-exact-login-location: false
+  plugin-profiling: false
+  connection-throttle: -1
+  query-plugins: true
+  deprecated-verbose: default
+  shutdown-message: Server closed
+spawn-limits:
+  monsters: 20
+  animals: 6
+  water-animals: 3
+  ambient: 3
+chunk-gc:
+  period-in-ticks: 1000
+  load-threshold: 0
+ticks-per:
+  animal-spawns: 400
+  monster-spawns: 20
+  autosave: 0
+auto-updater:
+  enabled: false
+  on-broken:
+  - warn-console
+  - warn-ops
+  on-update:
+  - warn-console
+  - warn-ops
+  preferred-channel: rb
+  host: dl.bukkit.org
+  suggest-channels: true
+database:
+  username: bukkit
+  isolation: SERIALIZABLE
+  driver: org.sqlite.JDBC
+  password: walrus
+  url: jdbc:sqlite:{DIR}{NAME}.db
+worlds:
+  houseWorld:
+    generator: TerrainControl
+  newWorld:
+    generator: TerrainControl
+  oreWorld:
+    generator: TerrainControl
+  townWorld:
+    generator: TerrainControl

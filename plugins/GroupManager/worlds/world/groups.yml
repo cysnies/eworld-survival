@@ -1,0 +1,553 @@
+# Group inheritance
+#
+# Any inherited groups prefixed with a g: are global groups
+# and are inherited from the GlobalGroups.yml.
+#
+# Groups without the g: prefix are groups local to this world
+# and are defined in the this groups.yml file.
+#
+# Local group inheritances define your promotion tree when using 'manpromote/mandemote'
+
+groups:
+  default:
+    default: true
+    permissions: []
+    inheritance:
+    - g:groupmanager_default
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_1:
+    default: false
+    permissions:
+      - per.ad.use
+      - per.ad.chat.create
+      - per.land.flag.banMove
+      - essentials.mail.send
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_2:
+    default: false
+    permissions:
+      - per.land.handler.set.owner
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_3:
+    default: false
+    permissions:
+      - per.fix.bucket.lava
+      - per.shop.create
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_4:
+    default: false
+    permissions:
+      - per.land.flag.safe
+      - per.lock.create.ticket
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_5:
+    default: false
+    permissions:
+      - per.land.handler.zone
+      - per.land.handler.subzone
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_6:
+    default: false
+    permissions:
+      - per.land.flag.banPotionHurt
+      - per.fix.draw
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_7:
+    default: false
+    permissions:
+      - per.land.flag.banEntityChange
+      - per.infos.xq
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_8:
+    default: false
+    permissions:
+      - per.land.flag.banEye
+      - per.lock.create.key
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_9:
+    default: false
+    permissions:
+      - per.land.flag.poisonWater
+      - per.land.flag.suck
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_10:
+    default: false
+    permissions:
+      - per.land.flag.banTpIn
+      - per.land.flag.banHide
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_11:
+    default: false
+    permissions:
+      - per.land.flag.banSit
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_12:
+    default: false
+    permissions:
+      - per.land.flag.banMonster
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_13:
+    default: false
+    permissions:
+      - per.land.flag.banCmd
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_14:
+    default: false
+    permissions:
+      - per.land.flag.banFly
+      - per.land.flag.fly
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_15:
+    default: false
+    permissions:
+      - per.land.handler.fix
+      - per.land.flag.storm
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_50:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_51:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_52:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_53:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_54:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_55:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_56:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_57:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_58:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_59:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_60:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_61:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_62:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_63:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_64:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_100:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_101:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_102:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_103:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_104:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_105:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_150:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_151:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_152:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_153:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_154:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_155:
+    default: false
+    permissions:
+      - per.infos.gift
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_156:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_157:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_158:
+    default: false
+    permissions: []
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_200:
+    default: false
+    permissions:
+      - per.land.handler.create.vip
+      - quickshop.vip
+      - per.need.vip
+      - per.lock.vip
+      - per.chat.vip
+      - essentials.kit
+      - essentials.kits.vip1
+      - per.shop.vip
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_201:
+    default: false
+    permissions:
+      - per.fix.dropExp.vip
+      - per.fix.mineExp.vip
+      - essentials.kit
+      - essentials.kits.vip2
+      - per.fix.stoneGold
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_202:
+    default: false
+    permissions:
+      - essentials.joinfullserver
+      - essentials.teleport.timer.bypass
+      - per.land.handler.tp.noDelay
+      - per.need.noDelay
+      - per.need.tpr.vip
+      - per.chat.limit.vip
+      - per.death.durability
+      - per.fix.light
+      - per.fix.craft
+      - per.infos.xq
+      - essentials.kit
+      - essentials.kits.vip3
+      - per.sub.pack.vip
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_203:
+    default: false
+    permissions:
+      - per.smelt.vip
+      - per.fix.statsGood
+      - per.fix.mineGood
+      - per.fix.attackGood
+      - essentials.kit
+      - essentials.kits.vip4
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_204:
+    default: false
+    permissions:
+      - per.infos.spec.move
+      - essentials.hat
+      - per.chat.color
+      - essentials.kit
+      - essentials.kits.vip5
+      - per.land.flag.fly
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_205:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_206:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_250:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_251:
+    default: false
+    permissions:
+      - essentials.tp
+      - essentials.mute
+      - essentials.tempban
+      - essentials.ban
+      - essentials.ban.offline
+      - essentials.unban
+      - coreprotect.inspect
+      - coreprotect.lookup
+      - per.jb.op
+      - per.ad.remove
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_252:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_253:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''
+  level_254:
+    default: false
+    permissions:
+    inheritance:
+    info:
+      prefix: ''
+      build: true
+      suffix: ''

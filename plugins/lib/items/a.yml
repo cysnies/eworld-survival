@@ -1,0 +1,25 @@
+items:
+  '0':
+    type: DIAMOND_PICKAXE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a劳动稿
+      lore:
+      - §a+劳动稿+
+      enchants:
+        DURABILITY: 5
+        LOOT_BONUS_BLOCKS: 1
+        DIG_SPEED: 2
+  '1':
+    type: DIAMOND_PICKAXE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a劳动稿(精)
+      lore:
+      - §a+闪耀着特殊光芒的劳动稿+
+      enchants:
+        DURABILITY: 7
+        LOOT_BONUS_BLOCKS: 2
+        DIG_SPEED: 3

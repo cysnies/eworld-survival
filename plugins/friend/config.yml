@@ -1,0 +1,109 @@
+#功能:
+#>好友
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/friend/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#管理权限(管理)
+per_friend_admin: "per.friend.admin"
+#使用好友功能的权限(玩家)
+per_friend_use: "per.friend.use"
+#查看其它玩家好友列表的权限
+per_friend_info_other: "per.friend.info.other"
+#################################
+#####          配置         #####
+#################################
+item:
+  interval: 500                  #两次显示间隔,单位毫秒
+  confirmTimeLimit: 8            #确认时间限制
+  checkFrom: 4                   #跟下面的物品'show'的名字有关
+  delName: "&4确认删除好友&3{0}&4吗?"
+  delLore:
+  buyLimitName: "&a确认购买5个上限吗?"
+  buyLimitLore:
+    - "&7(花费&3500&7金币)"
+  main:
+    add: 0
+    info: 1
+    back: 4
+    pre: 3
+    next: 5
+    buyLimit: 8
+  
+#好友名字前缀
+pre: "&5[好友]"
+online: "&a"
+offline: "&7"
+
+#默认每个玩家的最大好友数量
+defaultLimit: 10
+#添加/删除好友时是否提示目标玩家
+tip:
+  add: true
+  remove: false
+#每次购买好友数量上限时购买的数量
+buyLimitAmount: 5
+#购买好友数量上限每次花费
+costs:
+  buyCost:
+    money: 500
+    exp: 0
+    level: 0
+    item:
+#好友上下线提示是否使用玩家的显示名
+tipShowName: true
+#################################
+#####        物品类型       #####
+#################################
+items:
+  buyCost:
+  show:
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l{0}
+  main_add:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §a添加好友
+  main_info:
+    type: MAP
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6提示:点击好友名可删除好友
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面
+  main_pre:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6上1页
+  main_next:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6下1页
+  main_buyLimit:
+    type: EMERALD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6购买5个好友上限
+      lore:
+        - "§7(花费§3500§7金币每5个上限)"
+        - "§7(需要确认)"

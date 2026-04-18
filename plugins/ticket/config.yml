@@ -1,0 +1,440 @@
+#功能:
+#>点券
+#>兑换码兑换点券
+#################################
+#####       语言文件        #####
+#################################
+#可以使用相对路径(是相对于服务端所在文件夹的路径)
+language: "plugins/ticket/language_cn.yml"
+#################################
+#####         权限          #####
+#################################
+#ticket管理权限(/ticket <reload/add/del>)
+per_ticket_admin: "per.ticket.admin"
+#################################
+#####       兑换码配置      #####
+#################################
+#修正增加年
+fixYear: 1
+
+#两次操作(使用与查看)的间隔,单位毫秒(有插件管理权限的无限制)
+interval: 5000
+
+#兑换码允许的字符
+chars: "abcdefghjkmnopqrstuvwxyz234567890"
+
+#兑换码长度
+length:                          #兑换码长度
+  generate:                      #随机生成
+    fix: 8                       #生成的长度
+  create:                        #非随机生成,手动创建
+    min: 1                       #最小长度
+    max: 10                      #最大长度
+    
+#次数(/ticket code generate <价值> <次数>中的次数)
+times:
+  max: 100                       #上限,防止意外输入
+#################################
+#####          配置         #####
+#################################
+#累加需要的玩家数
+goldAdd: 50
+#金币的刷新天数检测间隔,单位秒
+goldInterval: 60
+#金币更新间隔,单位毫秒
+goldUpdate: 3600000
+#每次更新限售的金币数
+goldAmount: 15000
+#1点券可以购买多少金币
+goldRate: 280
+#称号ID(vip1-vip5,无偿赞助)
+levelId:
+  - "1 200"
+  - "2 201"
+  - "3 202"
+  - "4 203"
+  - "5 204;205"
+  - "6 206"
+#执行的命令
+levelCmd: "level add <p> <level>"
+item:
+  rate: 300                      #制作点券石的固定手续费,单位金币
+  price: 100                     #1-5钻的价格,单位点券
+  priceYear: 1000                #1-5钻年费的价格,单位点券
+  free: 100                      #赞助石的价格,单位点券
+  interval: 500                  #查看间隔
+  confirmTimeLimit: 8            #确认时间限制
+  main:
+    buyGold: 16
+    stone: 17
+    buyTip: 0
+    vipTip: 1
+    buy1: 9
+    buy2: 10
+    info: 4
+    codeInfo: 12
+    codeUse: 14
+    vip1: 27
+    vip2: 29
+    vip3: 31
+    vip4: 33
+    vip5: 35
+    free: 8
+    big: 7
+    vip11: 36
+    vip12: 38
+    vip13: 40
+    vip14: 42
+    vip15: 44
+big:
+  gold: 18000
+  level: 30
+  cost: 100
+  con:
+    - 155
+    - 4
+    - 50
+    - 53
+    - 58
+  itemSmelt:
+    - "luck_diamond_3 8"
+    - "luck_diamond_4 8"
+    - "luck_diamond_5 8"
+    - "luck_diamond_2 20"
+    - "luck_diamond_1 10"
+    - "luck_diamond_7 5"
+    - "spec 1"
+  item:
+    - "big_sword 1"
+    - "big_bow 1"
+    - "big_armor_1 1"
+    - "big_armor_2 1"
+    - "big_armor_3 1"
+    - "big_armor_4 1"
+#################################
+#####          物品         #####
+#################################
+items:
+  ticketStone:
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5点券石
+      lore:
+      - §5+命令石+§a控制台
+      - §5命令:§b ticket add <p> <amount>
+      - §7(使用后可以获得§5<amount>§7点券)
+      - §7(右键任意方块使用)
+  main_stone:
+    type: DIAMOND
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6制作点券石
+      lore:
+      - §3作用:§6制作出点券石,使用后可获得点券
+      - §3手续费:§5{0}§6金币
+      - §7(提示:这是点券的简易出售方式)
+      - §7(提示:制作成功后你会减少相应的点券)
+      - §7(需要输入要制作的点券数量)
+  big_armor_1:
+    type: DIAMOND_HELMET
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+  big_armor_2:
+    type: DIAMOND_CHESTPLATE
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+  big_armor_3:
+    type: DIAMOND_LEGGINGS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+  big_armor_4:
+    type: DIAMOND_BOOTS
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      enchants:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+  big_sword:
+    type: DIAMOND_SWORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§6圣剑"
+      lore:
+        - "§5\u3007\u3007\u3007\u3007\u3007\u3007\u3007"
+  big_bow:
+    type: BOW
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§6神弓"
+      lore:
+        - "§1\u3007\u3007\u3007\u3007\u3007"
+  main_buyGold:
+    type: GOLD_INGOT
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6§l购买金币
+      lore:
+      - '§6比例: §a1点券={0}金币'
+      - §7(每隔{0}小时刷新{1}金币)
+      - §7(刷新时若在线玩家数超过{0}则累加否则重置)
+      - §6(当前服务器还剩余可售§5{0}§6金币)
+      - §7(周六周日刷新量翻倍)
+      - §7(需要输入)
+  main_big:
+    type: MAGMA_CREAM
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§c§l首充大礼包"
+      lore:
+        - "§3条件: §a获得[活跃],[原木],[草民],[初级矿工],[初级猎手]5个称号"
+        - "§3礼包内容:"
+        - "§6金币§3x18000 §6等级§3x30"
+        - "§6钻石鉴定石§3x8 §6钻石保护石§3x8 §6钻石打孔石§3x8"
+        - "§6劣质钻石修复石§3x20 §6钻石修复石§3x10 §6完美钻石修复石§3x5"
+        - "§57星§6钻石圣剑§3x1 §55星§6神弓§3x1 §6全套附魔钻石甲§3x1"
+        - "§5随机特效石§3x1"
+        - "§7(只能获取一次,花费§5100§7点券)"
+        - "§7(需要确认)"
+  main_buy1:
+    type: EMERALD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§6§l点券购买方式一(推荐):§5§l淘宝购买"
+      lore:
+        - "§6说明: §a通过淘宝购买,再联系服主添加点券"
+        - "§6额外奖励: §a淘宝购买后记得给好评,会§5§l+15%§a点券哦!!!"
+        - "§6网址: §7点击一下此按钮,会出来网址,再点击网址即可进入."
+        - "§7(此方式有淘宝账号才能支付)"
+  main_buy2:
+    type: EMERALD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: "§6§l点券购买方式二:§5§l自动充值平台"
+      lore:
+        - "§6说明: §a自动充值,无需联系服主"
+        - "§6额外奖励: §7无"
+        - "§6充值流程: §a进入充值平台充值后,在订单成功界面里找到§b§l8位卡密§a,使用即可"
+        - "§6网址: §7点击一下此按钮,会出来网址,再点击网址即可进入."
+        - "§7(充值界面里游戏名随意填,订单成功界面卡号都是a,不用理会)"
+        - "§7(此方式可以用银行卡,支付宝支付或手机充值卡,骏卡,Q币卡等各种卡来支付)"
+  main_buyTip:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l点券说明
+      lore:
+        - "§c一.点券是什么?"
+        - "§6答:§a点券是本服务器里的一种虚拟货币,类似金币,有数量."
+        - "§c二.点券有什么用?"
+        - "§6答:§b点券只能在本页面使用,可以购买首充大礼包,无偿赞助,5种VIP"
+        - "§c三.点券怎么获得?"
+        - "§6答:§a1.充值获得;2.使用点券石获得"
+        - "§c四.点券可以转账吗?"
+        - "§6答:§b可以将点券制作成点券石然后出售."
+        - "§c五.人民币与点券的兑换比例是多少?"
+        - "§6答:§a10元=100点券."
+        - "§c六.点券能购买其它东西吗?"
+        - "§6答:§b为保证良好的游戏环境,点券无法直接购买游戏内的物品."
+  main_vipTip:
+    type: FEATHER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§lVIP说明
+      lore:
+        - "§c一.VIP权限在哪查看?"
+        - "§6答:§a输入/cmd->进入称号操作界面->查看未获取称号(或已获取称号)"
+        - "§a->点击赞助类型->查看各VIP权限与奖励."
+        - "§c二.VIP如何购买与获取?"
+        - "§6答:§a1.在此界面购买VIP以获取相应的VIP称号"
+        - "§b2.输入/cmd进入奖励列表领取VIP称号附带的奖励"
+        - "§7(每个VIP称号都附带5000金币与10等级奖励哦)"
+  main_info:
+    type: PAPER
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: '§a你的点券: §5{0}'
+  main_codeInfo:
+    type: GOLD_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6查看卡密状态
+      lore:
+        - §7(可以查看卡密是否被用了及被谁用了)
+        - §7(需要输入)
+  main_codeUse:
+    type: GREEN_RECORD
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §6使用卡密
+      lore:
+        - §7(使用卡密以获得点券)
+        - §7(需要输入)
+  main_vip11:
+    type: INK_SACK
+    damage: 1
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c§l年费红钻经济VIP(20%优惠)
+      lore:
+        - §7(花费§51000§7点券)
+        - §7(会获得§5360§7天的§c[红钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(同样有12倍称号奖励)
+        - §7(需要确认)
+  main_vip12:
+    type: INK_SACK
+    damage: 11
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §e§l年费黄钻经验VIP(20%优惠)
+      lore:
+        - §7(花费§51000§7点券)
+        - §7(会获得§5360§7天的§e[黄钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(同样有12倍称号奖励)
+        - §7(需要确认)
+  main_vip13:
+    type: INK_SACK
+    damage: 4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l年费蓝钻自由VIP(20%优惠)
+      lore:
+        - §7(花费§51000§7点券)
+        - §7(会获得§5360§7天的§3[蓝钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(同样有12倍称号奖励)
+        - §7(需要确认)
+  main_vip14:
+    type: INK_SACK
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l年费绿钻幸运VIP(20%优惠)
+      lore:
+        - §7(花费§51000§7点券)
+        - §7(会获得§5360§7天的§2[绿钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(同样有12倍称号奖励)
+        - §7(需要确认)
+  main_vip15:
+    type: INK_SACK
+    damage: 5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l年费紫钻炫酷VIP(20%优惠)
+      lore:
+        - §7(花费§51000§7点券)
+        - §7(会获得§5360§7天的§5[紫钻VIP]§7称号与§6§l[狂帅酷拽吊炸天]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(同样有12倍称号奖励)
+        - §7(需要确认)
+  main_vip1:
+    type: INK_SACK
+    damage: 1
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §c§l红钻经济VIP
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§530§7天的§c[红钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(需要确认)
+  main_vip2:
+    type: INK_SACK
+    damage: 11
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §e§l黄钻经验VIP
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§530§7天的§e[黄钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(需要确认)
+  main_vip3:
+    type: INK_SACK
+    damage: 4
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §3§l蓝钻自由VIP
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§530§7天的§3[蓝钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(需要确认)
+  main_vip4:
+    type: INK_SACK
+    damage: 2
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §2§l绿钻幸运VIP
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§530§7天的§2[绿钻VIP]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(需要确认)
+  main_vip5:
+    type: INK_SACK
+    damage: 5
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l紫钻炫酷VIP
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§530§7天的§5[紫钻VIP]§7称号与§6§l[狂帅酷拽吊炸天]§7称号)
+        - §7(如果已经有称号了则时间会相应延长)
+        - §7(需要确认)
+  main_free:
+    type: INK_SACK
+    damage: 6
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §5§l无偿赞助
+      lore:
+        - §7(花费§5100§7点券)
+        - §7(会获得§5永久§7的§3[赞助]§7称号!)
+        - §7(需要确认)
+  main_back:
+    type: ENDER_PORTAL
+    meta:
+      ==: ItemMeta
+      meta-type: UNSPECIFIC
+      display-name: §4§l返回主界面

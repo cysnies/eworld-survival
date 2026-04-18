@@ -1,0 +1,35 @@
+#################################
+#####       药效类型        #####
+#################################
+#药水:
+#  - 自己(怪物受实体伤害时触发)
+#    - 1 SPEED 速度
+#    - 5 INCREASE_DAMAGE 力量
+#    - 7 HARM 瞬间伤害(可能恢复)
+#    - 8 JUMP 跳跃提升
+#    - 11 DAMAGE_RESISTANCE 抗性提升
+#    - 12 FIRE_RESISTANCE 防火
+#    - 13 WATER_BREATHING 水下呼吸
+#    - 14 INVISIBILITY 隐身
+#  - 敌人(怪物攻击敌人时触发)
+#    - 2 SLOW 缓慢
+#    - 7 HARM 瞬间伤害(无视防御,十分恐怖)
+#    - 9 CONFUSION 反胃
+#    - 15 BLINDNESS 失明
+#    - 17 HUNGER 饥饿
+#    - 18 WEAKNESS 虚弱
+#    - 19 POISON 中毒
+#    - 20 WITHER 凋零
+
+#每次随机取一个
+potions:
+  self_low:
+    - "65 SPEED 1200 0 false true"     #成功概率 药效类型 药效时间(单位tick) 药效等级(0级开始) 是否强制覆盖 是否取药效强的(在非强制覆盖条件下)
+    - "35 SPEED 1200 1 false true"
+  speed_normal:
+    - "100 SPEED 300 2 false true"
+  enemy_boss:
+    - "50 SLOW 600 2  false true"
+    - "50 BLINDNESS 600 0  false true"
+    - "50 WEAKNESS 600 1  false true"
+    - "50 POISON 600 1  false true"
